@@ -1,0 +1,20 @@
+.element__like-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  background-image: url(./../../../images/heart.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #FFFFFF;
+  margin-right: 18px;
+}
+.element__like-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.element__like-button:active {
+  background-image: url(./../../../images/black-heart.svg);
+}
