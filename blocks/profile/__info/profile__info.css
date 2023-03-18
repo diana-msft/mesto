@@ -5,5 +5,5 @@
   grid-template-columns: 1fr 267px;
   padding-left: 30px;
   width: 100%;
-
+  row-gap: 7px;
 }
