@@ -7,3 +7,10 @@
   width: 100%;
   row-gap: 7px;
 }
+
+@media screen and (max-width: 320px) {
+  .profile__info {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+}
