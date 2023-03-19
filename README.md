@@ -23,4 +23,4 @@
 
 ## Demo
 
-[Mesto](https://diana-msft.github.io/russian-travel/)
+[Mesto](https://diana-msft.github.io/mesto/)
