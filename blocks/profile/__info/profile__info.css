@@ -1,16 +1,9 @@
 .profile__info {
   color: #FFFFFF;
-  display: grid;
+  /* display: grid;
   align-items: center;
-  grid-template-columns: 1fr 267px;
+  grid-template-columns: 1fr 267px; */
   padding-left: 30px;
+  padding-right: 30px;
   width: 100%;
-  row-gap: 7px;
-}
-
-@media screen and (max-width: 320px) {
-  .profile__info {
-    grid-template-columns: 1fr;
-    padding: 0;
   }
-}
