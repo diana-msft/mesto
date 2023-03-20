@@ -8,6 +8,13 @@
   width: 100%;
 }
 
+@media screen and (max-width: 820px) {
+  .profile__info {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+}
+  
 @media screen and (max-width: 320px) {
   .profile__info {
     margin: 22.25px 19px 29px;  }
