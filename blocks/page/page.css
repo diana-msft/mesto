@@ -4,7 +4,7 @@
 
 @media screen and (max-width: 945px) {
   .page {
-    margin-left: 19px;
-    margin-right: 19px;
+    padding-left: 19px;
+    padding-right: 19px;
   }
 }

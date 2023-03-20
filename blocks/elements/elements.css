@@ -10,10 +10,12 @@
 
 @media screen and (max-width: 910px) {
   .elements {
-    margin: 0 19px 44px;
+    margin-bottom: 44px;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    row-gap: 23px;  }
+    row-gap: 23px;
+    padding-left: 19px;
+    padding-right: 19px;  }
 }
 
 @media screen and (max-width: 600px) {
