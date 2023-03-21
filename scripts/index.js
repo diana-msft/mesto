@@ -1,8 +1,10 @@
+console.log("Hello World!");
 // Находим форму в DOM
-let formElement = // Воспользуйтесь методом querySelector()
+let formElement = document.querySelector('.popup');// Воспользуйтесь методом querySelector()
+let formCloseButtonElement = formElement.querySelector('.popup__close');
 // Находим поля формы в DOM
-let nameInput = // Воспользуйтесь инструментом .querySelector()
-let jobInput = // Воспользуйтесь инструментом .querySelector()
+let nameInput = document.querySelector('.popup__name');// Воспользуйтесь инструментом .querySelector()
+let jobInput = document.querySelector('.popup__job');// Воспользуйтесь инструментом .querySelector()
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
