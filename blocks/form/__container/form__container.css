@@ -7,10 +7,14 @@
   font-size: 14px;
   border: none;
   outline: none;
+  margin: 34px 36px;
+  padding: 0;
 }
 
 @media screen and (max-width: 535px) {
   .form__container {
     max-width: 238px;
+    margin: 25px 22px;
+    min-height: 322px;
   }
 }
