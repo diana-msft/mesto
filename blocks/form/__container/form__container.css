@@ -1,0 +1,17 @@
+.form__container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  border: none;
+  outline: none;
+}
+
+@media screen and (max-width: 535px) {
+  .form__container {
+    max-width: 238px;
+    width: 100%;
+  }
+}
