@@ -7,15 +7,12 @@
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css">
   </head>
-  <!-- убрать этот бордер -->
-  <!-- <div style="border:3px solid blue; outline: 3px solid red"> -->
   <body class="page">
     <header class="header">
       <img src="./images/logo.svg" alt="Логотип Место" class="header__logo">
     </header>
     <main class="content">
-
-  <!-- profile -->
+<!-- ------------profile------------ -->
       <section class="profile">
         <div class="avatar">
           <img
@@ -30,8 +27,7 @@
         </div>
         <button class="profile__add-button" type="button"></button>
       </section>
-
-  <!-- cards -->
+<!-- -------------cards-------------- -->
       <ul class="elements">
         <li class="element">
           <div class="element__image">
@@ -107,34 +103,28 @@
         </li>
       </ul>
     </main>
-
-    <!-- footer -->
+<!-- -----------footer----------- -->
     <footer class="footer">
       <p class="footer__copyright">&copy;2023 Mesto Kyrgyzstan</p>
     </footer>
-
-    <!-- pop-up -->
+<!-- ----------pop-up---------- -->
     <section class="popup">
       <div class="popup__container">
         <button class="popup__close" type="button"></button>
-        <div class="popup__content">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="form">
             <fieldset class="form__container">
-              <section class="form__field">
-                <input class="form__input popup__name" type="text" placeholder="Имя">
-              </section>
-              <section class="form__field">
-                <input class="form__input popup__job" type="text" placeholder="О себе">
-              </section>
+              <div class="form__field">
+                <input class="form__input popup__name" type="text" placeholder="Жак-Ив Кусто">
+              </div>
+              <div class="form__field">
+                <input class="form__input popup__job" type="text" placeholder="Исследователь океана">
+              </div>
               <button type="submit" class="form__submit-button">Сохранить</button>
             </fieldset>
-          <!-- <p class="popup__name"></p>
-          <p class="popup__job"></p> -->
-        </div>
+          </form>
       </div>
     </section>
+    <script src="./scripts/index.js"></script>
   </body>
-  <!-- </div> -->
-  <script src="./scripts/index.js"></script>
 </html>
