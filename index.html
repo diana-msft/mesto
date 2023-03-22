@@ -14,6 +14,8 @@
       <img src="./images/logo.svg" alt="Логотип Место" class="header__logo">
     </header>
     <main class="content">
+
+  <!-- profile -->
       <section class="profile">
         <div class="avatar">
           <img
@@ -28,6 +30,8 @@
         </div>
         <button class="profile__add-button" type="button"></button>
       </section>
+
+  <!-- cards -->
       <ul class="elements">
         <li class="element">
           <div class="element__image">
@@ -103,17 +107,30 @@
         </li>
       </ul>
     </main>
+
+    <!-- footer -->
     <footer class="footer">
       <p class="footer__copyright">&copy;2023 Mesto Kyrgyzstan</p>
     </footer>
+
     <!-- pop-up -->
     <section class="popup">
       <div class="popup__container">
         <button class="popup__close" type="button"></button>
         <div class="popup__content">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <p class="popup__name"></p>
-          <p class="popup__job"></p>
+          <form class="form">
+            <fieldset class="form__container">
+              <section class="form__field">
+                <input class="form__input form__field_name" type="text" placeholder="Имя">
+              </section>
+              <section class="form__field">
+                <input class="form__input form__field_job" type="text" placeholder="Должность">
+              </section>
+              <button type="submit" class="form__submit-button"></button>
+            </fieldset>
+          <!-- <p class="popup__name"></p>
+          <p class="popup__job"></p> -->
         </div>
       </div>
     </section>
