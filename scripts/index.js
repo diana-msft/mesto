@@ -4,15 +4,15 @@ console.log("Hello World!");
 //делаем выборку DOM элементов
 let formElement = document.querySelector('.popup');
 let formCloseButtonElement = formElement.querySelector('.popup__close');
-let formOpenButtonElement = document.querySelector('.profile__edit-button_is-opened');
+let formOpenButtonElement = document.querySelector('.popup_is-opened');
 
 const openPopup = function () {
-    formElement.classList.add('profile__edit-button_is-opened');
+    formElement.classList.add('popup_is-opened');
     console.log('Форма открыта');
 };
 
 const closePopup = function () {
-    formElement.classList.remove('profile__edit-button_is-opened');
+    formElement.classList.remove('popup_is-opened');
     console.log('Форма закрыта');
 };
 
