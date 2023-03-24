@@ -1,4 +1,4 @@
-.popup.profile__edit-button_is-opened {
+.popup_is-opened {
   display: flex;
   visibility: visible;
 }
