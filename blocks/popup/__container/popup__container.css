@@ -1,5 +1,5 @@
 .popup__container {
-  position: relative;
+  /* position: relative; */
   opacity: 1;
   display: flex;
   flex-direction: column;
@@ -20,4 +20,4 @@
   }
 }
 
-/* как расположить попап посередине */
+/*расположить попап посередине */

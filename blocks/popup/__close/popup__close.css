@@ -1,14 +1,14 @@
 .popup__close {
   position: absolute;
-  top: -35px;
-  right: -35px;
+  top: 210px;
+  right: 395px;
   width: 32px;
   height: 32px;
   margin: 0;
   padding: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  background-color: transparent;
+  background: transparent;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
