@@ -2,17 +2,17 @@ console.log("Hello World!");
 // Находим форму в DOM
 // Воспользуйтесь методом querySelector()
 //делаем выборку DOM элементов
-let formElement = document.querySelector('.popup');
-let formCloseButtonElement = formElement.querySelector('.popup__close');
-let formOpenButtonElement = document.querySelector('.profile__edit-button');
+const formElement = document.querySelector('.popup');
+const formCloseButtonElement = formElement.querySelector('.popup__close');
+const formOpenButtonElement = document.querySelector('.profile__edit-button');
 
 const openPopup = function () {
-    formElement.classList.add('popup_opened');
+    formElement.classList.add('profile__edit-button');
     console.log('Форма открыта');
 };
 
 const closePopup = function () {
-    formElement.classList.remove('popup_opened');
+    formElement.classList.remove('profile__edit-button');
     console.log('Форма закрыта');
 };
 
@@ -48,8 +48,8 @@ function handleFormSubmit (evt) {
                                                 // Так мы можем определить свою логику отправки.
                                                 // О том, как это делать, расскажем позже.
     // Получите значение полей jobInput и nameInput из свойства value
-let newName = nameInput.value;
-let newJob = jobInput.value;
+const newName = nameInput.value;
+const newJob = jobInput.value;
     // Выберите элементы, куда должны быть вставлены значения полей
 profileTitle.textContent = newName;
 profileSubtitle.textContent = newJob;
