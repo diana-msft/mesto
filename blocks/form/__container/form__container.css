@@ -13,8 +13,8 @@
 
 @media screen and (max-width: 535px) {
   .form__container {
-    max-width: 238px;
+    /* max-width: 238px; */
     margin: 25px 22px;
-    min-height: 322px;
+    /* min-height: 322px; */
   }
 }
