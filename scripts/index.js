@@ -1,59 +1,62 @@
 console.log("Hello World!");
-// Находим форму в DOM
-// Воспользуйтесь методом querySelector()
-//делаем выборку DOM элементов
-const formElement = document.querySelector('.popup');
-const formCloseButtonElement = formElement.querySelector('.popup__close');
-const formOpenButtonElement = document.querySelector('.profile__edit-button');
 
-const openPopup = function () {
-    formElement.classList.add('profile__edit-button');
+
+// сделать выборку DOM элементов
+let formElement = document.querySelector('.popup');
+let formCloseButtonElement = formElement.querySelector('.popup__close');
+let formOpenButtonElement = document.querySelector('.profile__edit-button');
+
+// добавить переключатели модификатора
+let openPopup = function () {
+    formElement.classList.add('popup_opened');
     console.log('Форма открыта');
 };
 
-const closePopup = function () {
-    formElement.classList.remove('profile__edit-button');
+let closePopup = function () {
+    formElement.classList.remove('popup_opened');
     console.log('Форма закрыта');
 };
 
-const closePopupByClickOnOverlay = function (evt) {
-    console.log(evt.target, evt.currentTarget);
-    if (evt.target !== evt.currentTarget) {
+// добавить функцию клик вне попапа
+// target - ссылка на элемент, который вызвал событие
+// currentTarget - ссылка на элемент (слушатель), 
+// на который навешен обработчик
+let closePopupByClickOnOverlay = function (event) {
+    console.log(event.target, event.currentTarget);
+    if (event.target !== event.currentTarget) {
         return;
     }
         closePopup();
     };
 
-//регистрируем обработчики событий по клику
+// зарегистрировать обработчики событий по клику
 formOpenButtonElement.addEventListener('click', openPopup);
-// formOpenButtonElement.addEventListener('click', function (event) {
-//     console.log(event);
-//  });
 formCloseButtonElement.addEventListener('click', closePopup);
 formElement.addEventListener('click', closePopupByClickOnOverlay);
 
-// togglePopupVisibility();
 
+// сделать выборку DOM элементов
 
-// Находим поля формы в DOM
-let nameInput = document.querySelector('.popup__name');// Воспользуйтесь инструментом .querySelector()
-let jobInput = document.querySelector('.popup__job');// Воспользуйтесь инструментом .querySelector()
+let nameInput = document.querySelector('.popup__name');
+let jobInput = document.querySelector('.popup__job');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function handleFormSubmit (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                                                // Так мы можем определить свою логику отправки.
-                                                // О том, как это делать, расскажем позже.
+
+function handleFormSubmit (event) {
+    event.preventDefault(); 
+    // Эта строчка отменяет стандартную отправку формы.
+    // Так мы можем определить свою логику отправки.
+    // О том, как это делать, расскажем позже.
     // Получите значение полей jobInput и nameInput из свойства value
 const newName = nameInput.value;
 const newJob = jobInput.value;
     // Выберите элементы, куда должны быть вставлены значения полей
+    // Вставьте новые значения с помощью textContent
 profileTitle.textContent = newName;
 profileSubtitle.textContent = newJob;
-    // Вставьте новые значения с помощью textContent
     closePopup();
 }
 
