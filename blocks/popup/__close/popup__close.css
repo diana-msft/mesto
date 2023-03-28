@@ -1,14 +1,14 @@
 .popup__close {
+  background: transparent;
   position: absolute;
-  top: -35px;
   right: -35px;
+  top: -35px;
   width: 32px;
   height: 32px;
   margin: 0;
   padding: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -23,8 +23,8 @@
 
   @media screen and (max-width: 535px){
     .popup__close {
-      top: -33px;
-      right: 5px;
+      right: 0;
+      top: -25px;
       width: 20px;
       height: 20px;
     }
