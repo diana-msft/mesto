@@ -37,8 +37,8 @@ formElement.addEventListener('click', closePopupByClickOnOverlay);
 
 // сделать выборку DOM элементов
 
-let nameInput = document.querySelector('.popup__name');
-let jobInput = document.querySelector('.popup__job');
+let nameInput = document.querySelector('.form__input_name');
+let jobInput = document.querySelector('.form__input_job');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
 
