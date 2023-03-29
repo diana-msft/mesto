@@ -7,8 +7,7 @@
   height: 32px;
   margin: 0;
   padding: 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
+  border: none;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -17,8 +16,13 @@
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .popup__close:hover, .popup__close:focus {
-  fill: var(--accent-color);
+  .popup__close:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  
+  .popup__close:focus {
+    outline: none;
   }
 
   @media screen and (max-width: 535px){
