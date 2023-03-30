@@ -8,7 +8,7 @@
   background-image: url(./../../../images/heart.svg);
   background-repeat: no-repeat;
   background-position: center;
-  border: 1px solid #FFFFFF;
+  border: none;
   margin-right: 18px;
 }
 .element__like-button:hover {

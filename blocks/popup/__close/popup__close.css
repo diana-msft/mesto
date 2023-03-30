@@ -1,14 +1,13 @@
 .popup__close {
   background: transparent;
   position: absolute;
-  right: -35px;
-  top: -35px;
+  right: -40px;
+  top: -40px;
   width: 32px;
   height: 32px;
   margin: 0;
   padding: 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
+  border: none;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -17,14 +16,19 @@
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .popup__close:hover, .popup__close:focus {
-  fill: var(--accent-color);
+  .popup__close:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  
+  .popup__close:focus {
+    outline: none;
   }
 
   @media screen and (max-width: 535px){
     .popup__close {
       right: 0;
-      top: -25px;
+      top: -35px;
       width: 20px;
       height: 20px;
     }

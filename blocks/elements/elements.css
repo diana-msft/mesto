@@ -9,18 +9,25 @@
   padding: 0;
 }
 
-@media screen and (max-width: 910px) {
+@media screen and (max-width: 944px) {
   .elements {
     margin-bottom: 44px;
+    margin-right: 30px;
+    margin-left: 30px;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    row-gap: 23px;
       }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 680px) {
   .elements {
     grid-template-columns: repeat(1, 1fr);
       }
 }
   
+@media screen and (max-width: 380px) {
+  .elements {
+    margin-right: 0;
+    margin-left: 0;
+      }
+}

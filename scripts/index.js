@@ -1,49 +1,40 @@
-console.log("Hello World!");
-
-
 // сделать выборку DOM элементов
-let formElement = document.querySelector('.popup');
-let formCloseButtonElement = formElement.querySelector('.popup__close');
-let formOpenButtonElement = document.querySelector('.profile__edit-button');
+const popupElement = document.querySelector('.popup');
+const popupCloseButtonElement = popupElement.querySelector('.popup__close');
+const popupOpenButtonElement = document.querySelector('.profile__edit-button');
+const formElement = document.querySelector('.form__submit-button');
+const nameInput = document.querySelector('.form__input_name');
+const jobInput = document.querySelector('.form__input_job');
+const profileTitle = document.querySelector('.profile__title');
+const profileSubtitle = document.querySelector('.profile__subtitle');
 
 // добавить переключатели модификатора
-let openPopup = function () {
-    formElement.classList.add('popup_opened');
-    console.log('Форма открыта');
+const openPopup = function () {
+    popupElement.classList.add('popup_opened');
+    nameInput.value = profileTitle.textContent;
+    jobInput.value = profileSubtitle.textContent;
 };
 
-let closePopup = function () {
-    formElement.classList.remove('popup_opened');
-    console.log('Форма закрыта');
+const closePopup = function () {
+    popupElement.classList.remove('popup_opened');
 };
 
 // добавить функцию клик вне попапа
 // target - ссылка на элемент, который вызвал событие
 // currentTarget - ссылка на элемент (слушатель), 
 // на который навешен обработчик
-let closePopupByClickOnOverlay = function (event) {
-    console.log(event.target, event.currentTarget);
-    if (event.target !== event.currentTarget) {
-        return;
-    }
-        closePopup();
-    };
-
-// зарегистрировать обработчики событий по клику
-formOpenButtonElement.addEventListener('click', openPopup);
-formCloseButtonElement.addEventListener('click', closePopup);
-formElement.addEventListener('click', closePopupByClickOnOverlay);
+// let closePopupByClickOnOverlay = function (event) {
+//     console.log(event.target, event.currentTarget);
+//     if (event.target !== event.currentTarget) {
+//         return;
+//     }
+//         closePopup();
+//     };
+// popupElement.addEventListener('click', closePopupByClickOnOverlay);
 
 
-// сделать выборку DOM элементов
 
-let nameInput = document.querySelector('.popup__name');
-let jobInput = document.querySelector('.popup__job');
-let profileTitle = document.querySelector('.profile__title');
-let profileSubtitle = document.querySelector('.profile__subtitle');
-
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
+// Обработчик «отправки» формы
 
 function handleFormSubmit (event) {
     event.preventDefault(); 
@@ -51,15 +42,17 @@ function handleFormSubmit (event) {
     // Так мы можем определить свою логику отправки.
     // О том, как это делать, расскажем позже.
     // Получите значение полей jobInput и nameInput из свойства value
-const newName = nameInput.value;
-const newJob = jobInput.value;
+    profileTitle.textContent = nameInput.value;
+    profileSubtitle.textContent = jobInput.value;
     // Выберите элементы, куда должны быть вставлены значения полей
     // Вставьте новые значения с помощью textContent
-profileTitle.textContent = newName;
-profileSubtitle.textContent = newJob;
     closePopup();
 }
 
+// зарегистрировать обработчики событий по клику
+popupOpenButtonElement.addEventListener('click', openPopup);
+popupCloseButtonElement.addEventListener('click', closePopup);
+
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', handleFormSubmit);
+formElement.addEventListener('click', handleFormSubmit);
