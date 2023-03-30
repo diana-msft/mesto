@@ -3,17 +3,18 @@
   padding-left: 30px;
   padding-right: 30px;
   width: 100%;
+  position: relative;
 }
 
 @media screen and (max-width: 820px) {
   .profile__info {
     padding-left: 19px;
     padding-right: 19px;
-    /* position: relative; */
   }
 }
   
 @media screen and (max-width: 320px) {
   .profile__info {
-    margin-top: 22.25px;  }
+    margin-top: 22.25px;
+    padding-left: 30px;  }
 }

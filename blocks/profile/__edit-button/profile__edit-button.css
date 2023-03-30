@@ -6,7 +6,11 @@
   width: 24px;
   height: 24px;
   border: 1px solid #FFFFFF;
-  margin-bottom: 17px;
+  position: absolute;
+  left: 342px;
+  right: 0px;
+  top: 12px;
+  bottom: 0px;
 }
 
 .profile__edit-button:hover {
@@ -18,16 +22,24 @@
   outline: none;
 }
 
+@media screen and (max-width: 980px) {
+  .profile__edit-button {
+    left: 270px;
+    top: 7px;
+    }
+}
+
 @media screen and (max-width: 682px) {
   .profile__edit-button {
-    /* position: absolute; */
     width: 18px;
     height: 18px;
-    margin: 0;
-    padding: 0;
-    /* left: 430px; */
-    /* right: 234px; */
-    /* top: 200px; */
-    /* bottom: 29px; */
+    left: 250px;
+    top: 12px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .profile__edit-button {
+    left: 230px;
   }
 }
