@@ -9,13 +9,22 @@
   white-space: nowrap;
   overflow: hidden;
   max-width: 340px;
+  padding-right: 20px;
 }
 
 @media screen and (max-width: 950px) {
   .profile__subtitle {
-    max-width: 250px;
+    max-width: 282px;
+    padding-right: 120px;
   }
 }
+
+@media screen and (max-width: 695px) {
+  .profile__subtitle {
+    padding: 0;
+  }
+}
+
 
 @media screen and (max-width: 535px) {
   .profile__subtitle {
