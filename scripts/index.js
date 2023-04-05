@@ -6,7 +6,7 @@ const nameInput = document.querySelector('.form__input_type_name');
 const jobInput = document.querySelector('.form__input_type_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const submit_form = document.querySelector('.submit_form');
+const submit_form = document.querySelector('.submitForm');
 
 // добавить переключатели модификатора
 const openPopup = function () {
@@ -57,4 +57,4 @@ popupCloseButtonElement.addEventListener('click', closePopup);
 // он будет следить за событием “submit” - «отправка»
 // formElement.addEventListener('submit', handleFormSubmit);
 
-submit_form.addEventListener("submit", handleFormSubmit);
+submitForm.addEventListener("submit", handleFormSubmit);
