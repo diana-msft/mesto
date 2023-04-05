@@ -6,7 +6,7 @@ const nameInput = document.querySelector('.form__input_type_name');
 const jobInput = document.querySelector('.form__input_type_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const submit_form = document.querySelector('.submitForm');
+const submitForm = document.querySelector('.submit-form');
 
 // добавить переключатели модификатора
 const openPopup = function () {
