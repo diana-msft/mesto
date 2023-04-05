@@ -2,11 +2,11 @@
 const popupElement = document.querySelector('.popup');
 const popupCloseButtonElement = popupElement.querySelector('.popup__close');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
-const formElement = document.querySelector('.form__submit-button');
-const nameInput = document.querySelector('.form__input_name');
-const jobInput = document.querySelector('.form__input_job');
+const nameInput = document.querySelector('.form__input_type_name');
+const jobInput = document.querySelector('.form__input_type_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
+const submit_form = document.querySelector('.submit_form');
 
 // добавить переключатели модификатора
 const openPopup = function () {
@@ -55,4 +55,6 @@ popupCloseButtonElement.addEventListener('click', closePopup);
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('click', handleFormSubmit);
+// formElement.addEventListener('submit', handleFormSubmit);
+
+submit_form.addEventListener("submit", handleFormSubmit);

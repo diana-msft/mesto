@@ -31,3 +31,10 @@
     margin-left: 0;
       }
 }
+
+@media screen and (max-width: 320px) {
+  .elements {
+    padding-left: 10px;
+    padding-right: 10px;
+      }
+}

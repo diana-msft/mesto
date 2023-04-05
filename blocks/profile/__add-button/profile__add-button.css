@@ -24,3 +24,8 @@
     width: 100%;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .profile__add-button {
+    background-image: url(../../../images/plus-16.svg);  }
+}
