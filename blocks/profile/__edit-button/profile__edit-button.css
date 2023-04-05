@@ -28,24 +28,17 @@
     }
 }
 
-@media screen and (max-width: 682px) {
+@media screen and (max-width: 695px) {
   .profile__edit-button {
     width: 18px;
     height: 18px;
-    left: 260px;
-    top: 12px;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .profile__edit-button {
-    left: 250px;
+    left: 270px;
+    top: 10px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .profile__edit-button {
-    left: 271px;
     top: 8px;
   }
 }

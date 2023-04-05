@@ -13,7 +13,7 @@
   padding-top: 9px;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 985px) {
   .profile__subtitle {
     max-width: 282px;
     padding-right: 120px;
