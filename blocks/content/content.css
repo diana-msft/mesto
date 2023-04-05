@@ -11,3 +11,9 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
 }
+
+@media screen and (max-width: 320px) {
+  .content {
+    padding-left: 10px;
+  }
+}
