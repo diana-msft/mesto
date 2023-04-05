@@ -16,11 +16,16 @@
     min-width: 285px;
   }
 }
+
+@media screen and (max-width: 695px) {
+  .profile__info {
+    justify-content: center; 
+  }
+}
   
 @media screen and (max-width: 320px) {
   .profile__info {
     margin-top: 18px;
     padding-left: 30px;
-    justify-content: center;  
   }
 }
