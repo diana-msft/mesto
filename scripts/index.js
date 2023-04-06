@@ -1,4 +1,5 @@
 // сделать выборку DOM элементов
+
 const popupElement = document.querySelector('.popup');
 const popupCloseButtonElement = popupElement.querySelector('.popup__close');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
@@ -6,9 +7,10 @@ const nameInput = document.querySelector('.form__input_type_name');
 const jobInput = document.querySelector('.form__input_type_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const submitForm = document.querySelector('.submit-form');
+const submitForm = document.querySelector('.form');
 
 // добавить переключатели модификатора
+
 const openPopup = function () {
     popupElement.classList.add('popup_opened');
     nameInput.value = profileTitle.textContent;
@@ -38,23 +40,16 @@ const closePopup = function () {
 
 function handleFormSubmit (event) {
     event.preventDefault(); 
-    // Эта строчка отменяет стандартную отправку формы.
-    // Так мы можем определить свою логику отправки.
-    // О том, как это делать, расскажем позже.
-    // Получите значение полей jobInput и nameInput из свойства value
     profileTitle.textContent = nameInput.value;
     profileSubtitle.textContent = jobInput.value;
-    // Выберите элементы, куда должны быть вставлены значения полей
-    // Вставьте новые значения с помощью textContent
     closePopup();
 }
 
 // зарегистрировать обработчики событий по клику
+
 popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
 
 // Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-// formElement.addEventListener('submit', handleFormSubmit);
 
 submitForm.addEventListener("submit", handleFormSubmit);
