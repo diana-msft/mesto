@@ -16,6 +16,6 @@
   cursor: pointer;
 }
 .element__like-button:active {
-  opacity: 0.3;
+  opacity: 1;
   background-image: url(./../../../images/black-heart.svg);
 }

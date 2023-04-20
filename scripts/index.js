@@ -101,7 +101,27 @@ const initialCards = [
     const elementImage = newElement.querySelector('.element__image');
     elementImage.setAttribute('src', element.link);
     elementImage.setAttribute('alt', element.alt);
+    elementImage.dataset.id = element.name;
+    const deleteButton = newElement.querySelector('.element__delete-button');
+    deleteButton.addEventListener('click', handleDeleteButtonClick); 
     elements.append(newElement);
   }
 
   initialCards.forEach(createElement)
+
+  //удаление карточки
+  function handleDeleteButtonClick (event) {
+    const button = event.target
+    const element = button.closest('.element');
+    element.remove();
+  }
+
+  //создание новой карточки
+
+//   const newCard = {
+//       name: 'Новая карточка',
+//       link: './images/alakol-unsplash.jpg',
+//       alt: 'озеро с голубой водой в горах',
+//     }
+  
+//   createElement(newCard)
