@@ -92,12 +92,16 @@ const initialCards = [
   const elements = document.querySelector('.elements');
   const elementTemplate = document.querySelector('#elementTemplate').content;
 
-  initialCards.forEach(function(element) {
-    const newElement = document.querySelector('#elementTemplate').content.cloneNode(true);
+  
+
+  const createElement = (element) => {
+    const newElement = elementTemplate.cloneNode(true);
     const elementTitle = newElement.querySelector('.element__title');
     elementTitle.textContent = element.name;
     const elementImage = newElement.querySelector('.element__image');
     elementImage.setAttribute('src', element.link);
     elementImage.setAttribute('alt', element.alt);
     elements.append(newElement);
-  })
+  }
+
+  initialCards.forEach(createElement)
