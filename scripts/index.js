@@ -53,3 +53,51 @@ popupCloseButtonElement.addEventListener('click', closePopup);
 // Прикрепляем обработчик к форме:
 
 submitForm.addEventListener("submit", handleFormSubmit);
+
+//добавить карточки
+
+const initialCards = [
+    {
+      name: 'Ала-Куль',
+      link: './images/alakol-unsplash.jpg',
+      alt: 'озеро с голубой водой в горах',
+    },
+    {
+      name: 'Каракол',
+      link: './images/karakol-unsplash.jpg',
+      alt: 'ели в снегу на фоне голубого неб',
+    },
+    {
+      name: 'Кегеты',
+      link: './images/kegety-unsplash.jpg',
+      alt: 'горное ущелье с зелеными елями',
+    },
+    {
+      name: 'Нарын',
+      link: './images/naryn-unsplash.jpg',
+      alt: 'пастух на лошади на фоне гор',
+    },
+    {
+      name: 'Сон-Куль',
+      link: './images/sonkul-unsplash.jpg',
+      alt: 'юрта на фоне озера',
+    },
+    {
+      name: 'Иссык-Куль',
+      link: './images/issykul-unsplash.jpg',
+      alt: 'прозрачное озеро с камнями',
+    }
+  ]; 
+
+  const elements = document.querySelector('.elements');
+  const elementTemplate = document.querySelector('#elementTemplate').content;
+
+  initialCards.forEach(function(element) {
+    const newElement = document.querySelector('#elementTemplate').content.cloneNode(true);
+    const elementTitle = newElement.querySelector('.element__title');
+    elementTitle.textContent = element.name;
+    const elementImage = newElement.querySelector('.element__image');
+    elementImage.setAttribute('src', element.link);
+    elementImage.setAttribute('alt', element.alt);
+    elements.append(newElement);
+  })
