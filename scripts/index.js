@@ -53,3 +53,75 @@ popupCloseButtonElement.addEventListener('click', closePopup);
 // Прикрепляем обработчик к форме:
 
 submitForm.addEventListener("submit", handleFormSubmit);
+
+//добавить карточки
+
+const initialCards = [
+    {
+      name: 'Ала-Куль',
+      link: './images/alakol-unsplash.jpg',
+      alt: 'озеро с голубой водой в горах',
+    },
+    {
+      name: 'Каракол',
+      link: './images/karakol-unsplash.jpg',
+      alt: 'ели в снегу на фоне голубого неб',
+    },
+    {
+      name: 'Кегеты',
+      link: './images/kegety-unsplash.jpg',
+      alt: 'горное ущелье с зелеными елями',
+    },
+    {
+      name: 'Нарын',
+      link: './images/naryn-unsplash.jpg',
+      alt: 'пастух на лошади на фоне гор',
+    },
+    {
+      name: 'Сон-Куль',
+      link: './images/sonkul-unsplash.jpg',
+      alt: 'юрта на фоне озера',
+    },
+    {
+      name: 'Иссык-Куль',
+      link: './images/issykul-unsplash.jpg',
+      alt: 'прозрачное озеро с камнями',
+    }
+  ]; 
+
+  const elements = document.querySelector('.elements');
+  const elementTemplate = document.querySelector('#elementTemplate').content;
+
+  
+
+  const createElement = (element) => {
+    const newElement = elementTemplate.cloneNode(true);
+    const elementTitle = newElement.querySelector('.element__title');
+    elementTitle.textContent = element.name;
+    const elementImage = newElement.querySelector('.element__image');
+    elementImage.setAttribute('src', element.link);
+    elementImage.setAttribute('alt', element.alt);
+    elementImage.dataset.id = element.name;
+    const deleteButton = newElement.querySelector('.element__delete-button');
+    deleteButton.addEventListener('click', handleDeleteButtonClick); 
+    elements.append(newElement);
+  }
+
+  initialCards.forEach(createElement)
+
+  //удаление карточки
+  function handleDeleteButtonClick (event) {
+    const button = event.target
+    const element = button.closest('.element');
+    element.remove();
+  }
+
+  //создание новой карточки
+
+//   const newCard = {
+//       name: 'Новая карточка',
+//       link: './images/alakol-unsplash.jpg',
+//       alt: 'озеро с голубой водой в горах',
+//     }
+  
+//   createElement(newCard)
