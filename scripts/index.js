@@ -103,14 +103,14 @@ const initialCards = [
     elementImage.setAttribute('alt', element.alt);
     elementImage.dataset.id = element.name;
     const deleteButton = newElement.querySelector('.element__delete-button');
-    deleteButton.addEventListener('click', handleDeleteButtonClick); 
+    deleteButton.addEventListener('click', handleDeleteButton); 
     elements.append(newElement);
   }
 
   initialCards.forEach(createElement)
 
   //удаление карточки
-  function handleDeleteButtonClick (event) {
+  function handleDeleteButton (event) {
     const button = event.target
     const element = button.closest('.element');
     element.remove();
