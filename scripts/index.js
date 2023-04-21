@@ -1,13 +1,13 @@
 // сделать выборку DOM элементов
 
-const popupElement = document.querySelector('.popup');
+const popupElement = document.querySelector('.popup_type_edit');
 const popupCloseButtonElement = popupElement.querySelector('.popup__close');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
 const nameInput = document.querySelector('.form__input_type_name');
 const jobInput = document.querySelector('.form__input_type_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const submitForm = document.querySelector('.form');
+const submitForm = document.querySelector('.form_type_edit');
 
 // добавить переключатели модификатора
 
@@ -36,7 +36,7 @@ const closePopup = function () {
 
 
 
-// Обработчик «отправки» формы
+// обработчик «отправки» формы
 
 function handleFormSubmit (event) {
     event.preventDefault(); 
@@ -50,11 +50,11 @@ function handleFormSubmit (event) {
 popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
 
-// Прикрепляем обработчик к форме:
+// прикрепляем обработчик к форме:
 
 submitForm.addEventListener("submit", handleFormSubmit);
 
-//добавить карточки
+//добавляем карточки
 
 const initialCards = [
     {
@@ -118,10 +118,65 @@ const initialCards = [
 
   //создание новой карточки
 
-//   const newCard = {
-//       name: 'Новая карточка',
-//       link: './images/alakol-unsplash.jpg',
-//       alt: 'озеро с голубой водой в горах',
-//     }
-  
-//   createElement(newCard)
+// находим кнопку на странице
+const addButton = document.querySelector('.profile__add-button');
+
+// находим попап на странице
+const popupAddPlace = document.querySelector('.popup_type_add');
+
+// находим форму внутри попапа
+const form = document.querySelector('.form_type_add');
+
+//находим инпут заголовка внутри формы
+const titleInput = document.querySelector('.form__input_type_title');
+
+//находим инпут линка внутри формы
+const linkInput = document.querySelector('.form__input_type_link');
+
+// // добавляем обработчик событий на кнопку
+addButton.addEventListener('click', function(event) {
+  // открываем попап
+  popupAddPlace.classList.add('popup_opened');
+});
+
+
+// добавляем обработчик событий на форму внутри попапа
+form.addEventListener('submit', function(event) {
+  // отменяем стандартное поведение формы
+  event.preventDefault();
+
+  // создаем новый элемент div
+  const newCard = document.createElement('div');
+  newCard.classList.add('element');
+
+  // создаем элемент заголовка и добавляем его в карточку
+  const cardTitle = document.createElement('h2');
+  cardTitle.textContent = form.elements.title.value;
+  newCard.appendChild(cardTitle);
+
+  // создаем поле ссылки и добавляем его в карточку
+  const cardLink = document.createElement('src');
+  cardLink.textContent = form.elements.link.value;
+  newCard.appendChild(cardLink);
+
+  // добавляем карточку на страницу
+  const cardContainer = document.querySelector('.popup__container');
+  cardContainer.appendChild(newCard);
+
+  // обработчик «отправки» формы
+
+function newCardAdd (event) {
+    event.preventDefault(); 
+    cardTitle.textContent = titleInput.value;
+    cardLink.textContent = linkInput.value;
+    addCard ();
+    closePopup();
+}
+
+  // закрываем попап
+  popupAddPlace.classList.remove('popup_opened');
+
+  // сбрасываем значения формы
+  form.reset();
+});
+
