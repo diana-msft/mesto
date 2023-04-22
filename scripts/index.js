@@ -37,7 +37,6 @@ const closePopup = function () {
 
 
 // обработчик «отправки» формы
-
 function handleFormSubmit (event) {
     event.preventDefault(); 
     profileTitle.textContent = nameInput.value;
@@ -46,16 +45,13 @@ function handleFormSubmit (event) {
 }
 
 // зарегистрировать обработчики событий по клику
-
 popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
 
 // прикрепляем обработчик к форме:
-
 submitForm.addEventListener("submit", handleFormSubmit);
 
 //добавляем карточки
-
 const initialCards = [
     {
       name: 'Ала-Куль',
@@ -92,8 +88,6 @@ const initialCards = [
   const elements = document.querySelector('.elements');
   const elementTemplate = document.querySelector('#elementTemplate').content;
 
-  
-
   const createElement = (element) => {
     const newElement = elementTemplate.cloneNode(true);
     const elementTitle = newElement.querySelector('.element__title');
@@ -109,23 +103,29 @@ const initialCards = [
 
   initialCards.forEach(createElement)
 
-  //удаление карточки
+ //удаление карточки
   function handleDeleteButton (event) {
     const button = event.target
     const element = button.closest('.element');
     element.remove();
   }
 
-  //создание новой карточки
+//---------создание новой карточки----------//
 
 // находим кнопку на странице
 const addButton = document.querySelector('.profile__add-button');
 
 // находим попап на странице
-const popupAddPlace = document.querySelector('.popup_type_add');
+const popupAdd = document.querySelector('.popup_type_add');
 
 // находим форму внутри попапа
-const form = document.querySelector('.form_type_add');
+const formAdd = document.querySelector('.form_type_add');
+
+// находим сабмит внутри попапа
+const popupSubmit = document.querySelector('.submit_type_add');
+
+//находим кнопку закрытия попапа
+const popupAddCloseButton = document.querySelector('.popup_add_close');
 
 //находим инпут заголовка внутри формы
 const titleInput = document.querySelector('.form__input_type_title');
@@ -133,50 +133,39 @@ const titleInput = document.querySelector('.form__input_type_title');
 //находим инпут линка внутри формы
 const linkInput = document.querySelector('.form__input_type_link');
 
-// // добавляем обработчик событий на кнопку
-addButton.addEventListener('click', function(event) {
+// добавляем обработчик событий на кнопку
+addButton.addEventListener('click', () => {
   // открываем попап
-  popupAddPlace.classList.add('popup_opened');
+  popupAdd.classList.add('popup_opened');
 });
 
+// закрываем попап по клику
+popupSubmit.addEventListener('click', () => {
+  popupAdd.classList.remove('popup_opened');
+});
+
+// закрываем попап по крестику
+popupAddCloseButton.addEventListener('click', () => {
+  popupAdd.classList.remove('popup_opened');
+})
 
 // добавляем обработчик событий на форму внутри попапа
-form.addEventListener('submit', function(event) {
+formAdd.addEventListener('submit', handleAddFormSubmit) 
+function handleAddFormSubmit (event) {
   // отменяем стандартное поведение формы
-  event.preventDefault();
+  event.preventDefault()
+  // добавляем карточку
+  const formAdd = event.target
+  const title = titleInput.value
+  const link = linkInput.value
+  const newElement = {
+    name: title,
+    link: link,
+  }
+  createElement(newElement);
+  }
 
-  // создаем новый элемент div
-  const newCard = document.createElement('div');
-  newCard.classList.add('element');
+// сбрасываем значения формы
+  formAdd.reset();
 
-  // создаем элемент заголовка и добавляем его в карточку
-  const cardTitle = document.createElement('h2');
-  cardTitle.textContent = form.elements.title.value;
-  newCard.appendChild(cardTitle);
-
-  // создаем поле ссылки и добавляем его в карточку
-  const cardLink = document.createElement('src');
-  cardLink.textContent = form.elements.link.value;
-  newCard.appendChild(cardLink);
-
-  // добавляем карточку на страницу
-  const cardContainer = document.querySelector('.popup__container');
-  cardContainer.appendChild(newCard);
-
-  // обработчик «отправки» формы
-
-function newCardAdd (event) {
-    event.preventDefault(); 
-    cardTitle.textContent = titleInput.value;
-    cardLink.textContent = linkInput.value;
-    addCard ();
-    closePopup();
-}
-
-  // закрываем попап
-  popupAddPlace.classList.remove('popup_opened');
-
-  // сбрасываем значения формы
-  form.reset();
-});
-
+// https://picsum.photos/200/300

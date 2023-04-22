@@ -119,7 +119,7 @@
             <fieldset class="form__container">
                 <input class="form__input form__input_type_name" name="name" type="text" placeholder="Имя" value="">
                 <input class="form__input form__input_type_job" name="job" type="text" placeholder="О себе" value="">
-              <button type="submit" class="form__submit-button">Сохранить</button>
+              <button type="submit" class="form__submit-button submit_type_edit">Сохранить</button>
             </fieldset>
           </form>
       </div>
@@ -127,13 +127,13 @@
 <!-- ----------new item pop-up---------- -->
     <div class="popup popup_type_add">
       <div class="popup__container">
-        <button class="popup__close" type="button"></button>
+        <button class="popup__close popup_add_close" type="button"></button>
           <h2 class="popup__title">Новое место</h2>
           <form class="form form_type_add" name="add-data" >
             <fieldset class="form__container">
                 <input class="form__input form__input_type_title" name="title" type="text" placeholder="Название" value="">
-                <input class="form__input form__input_type_link" name="link" type="text" placeholder="Ссылка на картинку" value="">
-              <button type="submit" class="form__submit-button">Создать</button>
+                <input class="form__input form__input_type_link" name="link" type="url" placeholder="Ссылка на картинку" value="">
+              <button type="submit" class="form__submit-button submit_type_add">Создать</button>
             </fieldset>
           </form>
       </div>
