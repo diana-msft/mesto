@@ -1,13 +1,13 @@
 // сделать выборку DOM элементов
 
-const popupElement = document.querySelector('.popup_edit');
+const popupElement = document.querySelector('.login-popup');
 const popupCloseButtonElement = popupElement.querySelector('.popup__close');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
 const nameInput = document.querySelector('.form__input_type_name');
 const jobInput = document.querySelector('.form__input_type_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const submitForm = document.querySelector('.form_edit');
+const submitForm = document.querySelector('.login-form');
 
 // добавить переключатели модификатора
 
@@ -121,16 +121,16 @@ const initialCards = [
 const addButton = document.querySelector('.profile__add-button');
 
 // находим попап на странице
-const popupAdd = document.querySelector('.popup_add');
+const popupAdd = document.querySelector('.newitem-popup');
 
 // находим форму внутри попапа
-const formAdd = document.querySelector('.form_add');
+const formAdd = document.querySelector('.newitem-form');
 
 // находим сабмит внутри попапа
-const popupSubmit = document.querySelector('.form__submit-button_add');
+const popupSubmit = document.querySelector('.newitem-form__submit-button');
 
 //находим кнопку закрытия попапа
-const popupAddCloseButton = document.querySelector('.popup_add_close');
+const popupAddCloseButton = document.querySelector('.newitem-popup__close');
 
 //находим инпут заголовка внутри формы
 const titleInput = document.querySelector('.form__input_type_title');
