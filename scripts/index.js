@@ -99,6 +99,11 @@ const initialCards = [
     const deleteButton = newElement.querySelector('.element__delete-button');
     deleteButton.addEventListener('click', handleDeleteButton); 
     elements.prepend(newElement);
+    //добавляем лайки
+    const likeButton = document.querySelector('.element__like-button');
+    const handleLike = () => {
+    likeButton.classList.toggle('element__like-button_active');}
+    likeButton.addEventListener('click', handleLike);
   }
 
   initialCards.forEach(createElement)
@@ -170,3 +175,5 @@ function handleAddFormSubmit (event) {
   formAdd.reset();
 
 // https://picsum.photos/200/300
+
+
