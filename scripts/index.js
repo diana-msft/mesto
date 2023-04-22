@@ -1,13 +1,13 @@
 // сделать выборку DOM элементов
 
-const popupElement = document.querySelector('.popup_type_edit');
+const popupElement = document.querySelector('.popup_edit');
 const popupCloseButtonElement = popupElement.querySelector('.popup__close');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
 const nameInput = document.querySelector('.form__input_type_name');
 const jobInput = document.querySelector('.form__input_type_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const submitForm = document.querySelector('.form_type_edit');
+const submitForm = document.querySelector('.form_edit');
 
 // добавить переключатели модификатора
 
@@ -98,7 +98,7 @@ const initialCards = [
     elementImage.dataset.id = element.name;
     const deleteButton = newElement.querySelector('.element__delete-button');
     deleteButton.addEventListener('click', handleDeleteButton); 
-    elements.append(newElement);
+    elements.prepend(newElement);
   }
 
   initialCards.forEach(createElement)
@@ -116,13 +116,13 @@ const initialCards = [
 const addButton = document.querySelector('.profile__add-button');
 
 // находим попап на странице
-const popupAdd = document.querySelector('.popup_type_add');
+const popupAdd = document.querySelector('.popup_add');
 
 // находим форму внутри попапа
-const formAdd = document.querySelector('.form_type_add');
+const formAdd = document.querySelector('.form_add');
 
 // находим сабмит внутри попапа
-const popupSubmit = document.querySelector('.submit_type_add');
+const popupSubmit = document.querySelector('.form__submit-button_add');
 
 //находим кнопку закрытия попапа
 const popupAddCloseButton = document.querySelector('.popup_add_close');
@@ -164,6 +164,7 @@ function handleAddFormSubmit (event) {
   }
   createElement(newElement);
   }
+
 
 // сбрасываем значения формы
   formAdd.reset();
