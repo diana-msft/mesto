@@ -12,119 +12,103 @@
       <img src="./images/logo.svg" alt="Логотип Место" class="header__logo">
     </header>
     <main class="content">
-<!-- ------------profile------------ -->
+      <!--------------profile-------------->
       <section class="profile">
         <img
-            src="./images/cousto.jpg"
-            alt="фото аватара"
-            class="profile__avatar">
+          src="./images/cousto.jpg"
+          alt="фото аватара"
+          class="profile__avatar">
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button"></button>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__add-button" type="button" aria-label="редактировать"></button>
+        <button
+          class="profile__add-button"
+          type="button"
+          aria-label="редактировать"
+        ></button>
       </section>
-<!-- -------------cards-------------- -->
-      <!-- <section> -->
-      <!-- <ul class="elements">
-        <li class="element">
-            <img
-              src="./images/alakol-unsplash.jpg"
-              alt="озеро с голубой водой в горах"
-              class="element__image">
-          <div class="element__info">
-            <h3 class="element__title">Ала-Куль</h3>
-            <button class="element__like-button" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-            <img
-              src="./images/karakol-unsplash.jpg"
-              alt="ели в снегу на фоне голубого неба"
-              class="element__image">
-          <div class="element__info">
-            <h3 class="element__title">Каракол</h3>
-            <button class="element__like-button" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-            <img
-              src="./images/kegety-unsplash.jpg"
-              alt="горное ущелье с зелеными елями"
-              class="element__image">
-          <div class="element__info">
-            <h3 class="element__title">Кегеты</h3>
-            <button class="element__like-button" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-            <img
-              src="./images/naryn-unsplash.jpg"
-              alt="пастух на лошади на фоне гор"
-              class="element__image">
-          <div class="element__info">
-            <h3 class="element__title">Нарын</h3>
-            <button class="element__like-button" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-            <img
-              src="./images/sonkul-unsplash.jpg"
-              alt="юрта на фоне озера"
-              class="element__image">
-          <div class="element__info">
-            <h3 class="element__title">Сон-Куль</h3>
-            <button class="element__like-button" type="button"></button>
-          </div>
-        </li>
-        <li class="element">
-            <img
-              src="./images/issykul-unsplash.jpg"
-              alt="прозрачное озеро с камнями"
-              class="element__image">
-          <div class="element__info">
-            <h3 class="element__title">Иссык-Куль</h3>
-            <button class="element__like-button" type="button"></button>
-          </div>
-        </li>
-      </ul> -->
-    <!-- </section> -->
-    <section>
-      <ul class="elements">
-      <template id="elementTemplate">
-        <li class="element">
-          <button class="element__delete-button" type="button"></button>
-          <img src="./images/alakol-unsplash.jpg" alt="фото природы" class="element__image">
-          <div class="element__info">
-            <h3 class="element__title">Ала-Куль</h3>
-            <button class="element__like-button" type="button"></button>
-          </div>
-        </li>
-      </template>
-      </ul>
-    </section>
-
+      <!--------------cards-------------->
+      <section>
+        <ul class="elements">
+          <template id="elementTemplate">
+            <li class="element">
+              <button class="element__delete-button" type="button"></button>
+              <img
+                src="./images/alakol-unsplash.jpg"
+                alt="фото природы"
+                class="element__image">
+              <div class="element__info">
+                <h3 class="element__title">Ала-Куль</h3>
+                <button class="element__like-button" type="button"></button>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </section>
     </main>
-<!-- -----------footer----------- -->
+    <!-------------footer------------->
     <footer class="footer">
       <p class="footer__copyright">&copy;2023 Mesto Kyrgyzstan</p>
     </footer>
-<!-- ----------pop-up---------- -->
-    <div class="popup">
+    <!------------profile edition pop-up------------>
+    <div class="popup popup_edit">
       <div class="popup__container">
         <button class="popup__close" type="button"></button>
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="form" name="add-data" >
-            <fieldset class="form__container">
-                <input class="form__input form__input_type_name" name="name" type="text" placeholder="Имя" value="">
-                <input class="form__input form__input_type_job" name="job" type="text" placeholder="О себе" value="">
-              <button type="submit" class="form__submit-button">Сохранить</button>
-            </fieldset>
-          </form>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="form form_edit" name="add-data">
+          <fieldset class="form__container">
+            <input
+              class="form__input form__input_type_name"
+              name="name"
+              type="text"
+              placeholder="Имя"
+              value="">
+            <input
+              class="form__input form__input_type_job"
+              name="job"
+              type="text"
+              placeholder="О себе"
+              value="">
+            <button
+              type="submit"
+              class="form__submit-button form__submit-button_edit">
+              Сохранить
+            </button>
+          </fieldset>
+        </form>
       </div>
     </div>
-<!-- ------------script----------- -->
+    <!------------new item pop-up------------>
+    <div class="popup popup_add">
+      <div class="popup__container">
+        <button class="popup__close popup_add_close" type="button"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form class="form form_add" name="add-data">
+          <fieldset class="form__container">
+            <input
+              class="form__input form__input_type_title"
+              name="title"
+              type="text"
+              placeholder="Название"
+              value="">
+            <input
+              class="form__input form__input_type_link"
+              name="link"
+              type="url"
+              placeholder="Ссылка на картинку"
+              value="">
+            <button
+              type="submit"
+              class="form__submit-button form__submit-button_add">
+              Создать
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <!--------------script------------->
     <script src="./scripts/index.js"></script>
   </body>
 </html>
