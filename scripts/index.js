@@ -170,10 +170,13 @@ function handleAddFormSubmit (event) {
   createElement(newElement);
   }
 
-
 // сбрасываем значения формы
   formAdd.reset();
 
 // https://picsum.photos/200/300
+
+
+//---------открытие попапа с картинкой----------//
+
 
 
