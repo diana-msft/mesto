@@ -10,5 +10,8 @@
   align-content: center;
   justify-content: center;
   overflow: auto;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s linear;
+  z-index: 999;
 }
