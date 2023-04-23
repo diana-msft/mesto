@@ -12,7 +12,7 @@
       <img src="./images/logo.svg" alt="Логотип Место" class="header__logo">
     </header>
     <main class="content">
-      <!--------------profile-------------->
+      <!-- profile -->
       <section class="profile">
         <img
           src="./images/cousto.jpg"
@@ -29,7 +29,7 @@
           aria-label="редактировать"
         ></button>
       </section>
-      <!--------------cards-------------->
+      <!-- cards -->
       <section>
         <ul class="elements">
           <template id="elementTemplate">
@@ -48,16 +48,16 @@
         </ul>
       </section>
     </main>
-    <!-------------footer------------->
+    <!-- footer -->
     <footer class="footer">
       <p class="footer__copyright">&copy;2023 Mesto Kyrgyzstan</p>
     </footer>
-    <!------------profile edition pop-up------------>
-    <div class="popup login-popup">
+    <!-- profile edition pop-up -->
+    <div class="popup">
       <div class="popup__container">
         <button class="popup__close" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="form login-form" name="add-data">
+        <form class="form profile-form" name="add-data">
           <fieldset class="form__container">
             <input
               class="form__input form__input_type_name"
@@ -73,14 +73,14 @@
               value="">
             <button
               type="submit"
-              class="form__submit-button form__submit-button_edit">
+              class="form__submit-button">
               Сохранить
             </button>
           </fieldset>
         </form>
       </div>
     </div>
-    <!------------new item pop-up------------>
+    <!-- new item pop-up -->
     <div class="popup newitem-popup">
       <div class="popup__container">
         <button class="popup__close newitem-popup__close" type="button"></button>
@@ -108,15 +108,15 @@
         </form>
       </div>
     </div>
-    <!-- ---------------image zoom-------------- -->
-    <div class="popup image-popup">
-      <figure class="popup__image-container">
-        <img src="#" alt="#" class="popup_image_zoomed">
-        <figcaption class="popup__image-caption"></figcaption>
-        <button class="popup__close popup_close_zoomed" type="button"></button>
-      </figure>
+    <!-- image zoom -->
+    <div class="popup zoom-popup">
+      <div class="popup__image-container">
+        <img src="#" alt="#" class="popup__image">
+        <div class="popup__image-caption"></div>
+        <button class="popup__close zoom-popup__close" type="button"></button>
+      </div>
     </div>
-    <!--------------script------------->
+    <!---script-->
     <script src="./scripts/index.js"></script>
   </body>
 </html>

@@ -1,16 +1,15 @@
 // сделать выборку DOM элементов
 
-const popupElement = document.querySelector('.login-popup');
+const popupElement = document.querySelector('.popup');
 const popupCloseButtonElement = popupElement.querySelector('.popup__close');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
 const nameInput = document.querySelector('.form__input_type_name');
 const jobInput = document.querySelector('.form__input_type_job');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-const submitForm = document.querySelector('.login-form');
+const submitForm = document.querySelector('.profile-form');
 
 // добавить переключатели модификатора
-
 const openPopup = function () {
     popupElement.classList.add('popup_opened');
     nameInput.value = profileTitle.textContent;
@@ -104,10 +103,10 @@ const initialCards = [
     likeButton.classList.toggle('element__like-button_active');}
     likeButton.addEventListener('click', handleLike);
     // //добавляем увеличение картинки
-    const popupImage = document.querySelector('.image-popup');
+    const popupImage = document.querySelector('.zoom-popup');
     const showImage = document.querySelector('.element__image');
-    const popupImageCloseButton = document.querySelector('.popup_close_zoomed');
-    const zoomImage = document.querySelector('.popup_image_zoomed');
+    const popupImageCloseButton = document.querySelector('.zoom-popup__close');
+    const zoomImage = document.querySelector('.popup__image');
     const zoomImageName = document.querySelector('.popup__image-caption');
 
     function handlePopupImageOpen() {
@@ -190,71 +189,4 @@ function handleAddFormSubmit (event) {
 
 // сбрасываем значения формы
   formAdd.reset();
-
-// https://picsum.photos/200/300
-
-
-//---------открытие попапа с картинкой----------//
-
-// const handlePopupImageOpen = document.querySelector('.image-popup');
-// const popupImageCloseButton = handlePopupImageOpen.querySelector('.popup__close');
-// const popupImage = document.querySelector('.popup__image');
-// const popupImageCaption = document.querySelector('.popup__image-caption');
-
-// const cardImage = document.querySelector('.element__image');
-// const cardName = document.querySelector('.element__title')        
-// const elementName = document.querySelector('.element__title');
-// const elementPhoto = document.querySelector('.element__image');
-
-//     cardName.textContent = elementData.name;
-//     cardImage.src = elementData.link;
-//     cardImage.alt = elementData.name;
-
-//     elementName.textContent = elementData.name;
-//     elementPhoto.src = elementData.link;
-//     elementPhoto.alt = elementData.name;
-
-//     cardImage.addEventListener('click', () => {
-//         handlePopupImage.classList.add('popup_opened')
-//         popupImage.src = elementData.link;
-//         popupImage.alt = elementData.name;
-//         popupImageCaption.textContent = elementData.name;
-//     })
-
-// popupImageCloseButton.addEventListener('click', () => {
-//   imageContainer.classList.remove('popup_opened')
-// })
-
-
-//ГОСПОДИ Я БОЛЬШЕ НЕ МОГУ ЭТО ПИЗДЕЦ КАКОЙ-ТО((((((((((((
-
-// // Get the product card template and clone it
-// const elementCardTemplate = document.getElementById('elementTemplate');
-// const productCard = elementTemplate.cloneNode(true);
-
-// // Get the image element inside the product card and add a click event listener
-// const image = productCard.querySelector('.element__image');
-// image.addEventListener('click', function() {
-//   // Create a new div to hold the zoomed-in image
-//   const zoomed = document.createElement('div');
-//   zoomed.classList.add('zoomed');
-//   // Create a new image element to display the zoomed-in image
-//   const zoomedImage = document.createElement('img');
-//   zoomedImage.src = image.src;
-//   zoomed.appendChild(zoomedImage);
-//   // Add a close button to the zoomed-in image
-//   const closeButton = document.createElement('button');
-//   closeButton.innerHTML = 'Close';
-//   closeButton.classList.add('close');
-//   closeButton.addEventListener('click', function() {
-//     // Remove the zoomed-in image when the close button is clicked
-//     zoomed.remove();
-//   });
-//   zoomed.appendChild(closeButton);
-//   // Add the zoomed-in image to the product card
-//   productCard.appendChild(zoomed);
-// });
-
-// // Add the product card to the page
-// const productList = document.getElementById('page');
-// productList.appendChild(productCard);
+ 
