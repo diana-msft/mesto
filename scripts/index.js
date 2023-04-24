@@ -2,7 +2,7 @@
  * добавть попап изменения данных в профиле
  */
 //сделать выборку DOM элементов для профиля
-const popupElement = document.querySelector(".profile-popup");
+const popupElement = document.querySelector(".popup-profile");
 const popupCloseButtonElement = popupElement.querySelector(".profile-popup__close");
 const popupOpenButtonElement = document.querySelector(".profile__edit-button");
 const nameInput = document.querySelector(".form__input_type_name");
@@ -18,12 +18,12 @@ const zoomImageName = document.querySelector(".popup__image-caption");
 
 //попап
 //добавить класс
-function openPopup(popupElement) {
-  popupElement.classList.add('popup_opened');
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
 //удалить класс
-function closePopup(popupElement) {
-  popupElement.classList.remove('popup_opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
 }
 
 //добавить переключатели модификатора
@@ -147,12 +147,11 @@ addButton.addEventListener("click", () => {
 
 //закрываем попап по сабмиту
 popupSubmitButton.addEventListener("click", () => {
-  popupAdd.classList.remove("popup_opened");
+  closePopup(popupAdd);
 });
 //закрываем попап по крестику
-
 popupAddCloseButton.addEventListener("click", () => {
-  popupAdd.classList.remove("popup_opened");
+  closePopup(popupAdd);
 });
 
 // добавляем обработчик событий на форму внутри попапа
