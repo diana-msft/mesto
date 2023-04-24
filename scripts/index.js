@@ -1,6 +1,6 @@
 
 //сделать выборку DOM элементов для профиля
-const popupElement = document.querySelector(".popup-profile");
+const popupElement = document.querySelector(".profile-popup");
 const popupCloseButtonElement = popupElement.querySelector(".profile-popup__close");
 const popupOpenButtonElement = document.querySelector(".profile__edit-button");
 const nameInput = document.querySelector(".form__input_type_name");
