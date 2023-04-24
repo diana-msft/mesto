@@ -65,7 +65,7 @@ const createCard = (element) => {
   const elementTitle = newElement.querySelector(".element__title");
   const elementImage = newElement.querySelector(".element__image");
   const deleteButton = newElement.querySelector(".element__delete-button");
-
+  
   //задать атрибуты новым элементам
   elementTitle.textContent = element.name;
   elementImage.setAttribute("src", element.link);
@@ -75,12 +75,8 @@ const createCard = (element) => {
   //добавить отработчик удаления
   deleteButton.addEventListener("click", handleDeleteButton);
 
-  // добавляем новый элемент
-  return newElement;
-
-
   //добавляем отработчик лайков
-  const likeButton = document.querySelector(".element__like-button");
+  const likeButton = newElement.querySelector(".element__like-button");
   const handleLike = () => {
     likeButton.classList.toggle("element__like-button_active");
   };
@@ -101,11 +97,9 @@ const createCard = (element) => {
   }
   elementImage.addEventListener("click", handlePopupImageOpen);
   popupImageCloseButton.addEventListener("click", handlePopupImageClose);
-  
 
+  return newElement;
 };
-
-initialCards.forEach(createCard);
 
   const renderCard = (element) => {
   cardsContainer.prepend(element)
@@ -176,7 +170,7 @@ function handleAddFormSubmit(event) {
     name: title,
     link: link,
   };
-  renderCard(newElement);
+  renderCard(createCard(newElement));
   // сбрасываем введенные значения формы
   formAdd.reset();
 }
