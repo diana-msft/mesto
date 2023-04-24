@@ -110,8 +110,7 @@ const createCard = (element) => {
   popupImageCloseButton.addEventListener("click", handlePopupImageClose);
 
 };
-
-initialCards.forEach(createCard);
+  initialCards.forEach(createCard);
 
 /**
  * удаление карточки из DOM
