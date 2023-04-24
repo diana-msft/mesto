@@ -1,4 +1,3 @@
-
 //сделать выборку DOM элементов для профиля
 const popupElement = document.querySelector(".profile-popup");
 const popupCloseButtonElement = popupElement.querySelector(".profile-popup__close");
