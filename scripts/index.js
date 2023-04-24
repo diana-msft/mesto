@@ -1,117 +1,104 @@
-// сделать выборку DOM элементов
-
-const popupElement = document.querySelector(".popup");
-const popupCloseButtonElement = popupElement.querySelector(".popup__close");
+/**
+ * добавть попап изменения данных в профиле
+ */
+//сделать выборку DOM элементов для профиля
+const popupElement = document.querySelector(".profile-popup");
+const popupCloseButtonElement = popupElement.querySelector(".profile-popup__close");
 const popupOpenButtonElement = document.querySelector(".profile__edit-button");
 const nameInput = document.querySelector(".form__input_type_name");
 const jobInput = document.querySelector(".form__input_type_job");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
-const submitForm = document.querySelector(".profile-form");
+const profileFormSubmit = document.querySelector(".profile-form");
+//добавляем выборку для увеличения картинки
+const popupImage = document.querySelector(".zoom-popup");
+const popupImageCloseButton = document.querySelector(".zoom-popup__close");
+const zoomImage = document.querySelector(".popup__image");
+const zoomImageName = document.querySelector(".popup__image-caption");
 
-// добавить переключатели модификатора
-const openPopup = function () {
+//попап
+//добавить класс
+function openPopup(popupElement) {
+  popupElement.classList.add('popup_opened');
+}
+//удалить класс
+function closePopup(popupElement) {
+  popupElement.classList.remove('popup_opened');
+}
+
+//добавить переключатели модификатора
+const openProfilePopup = function () {
   popupElement.classList.add("popup_opened");
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
 };
-
-const closePopup = function () {
+const closeProfilePopup = function () {
   popupElement.classList.remove("popup_opened");
 };
 
-// добавить функцию клик вне попапа
-// target - ссылка на элемент, который вызвал событие
-// currentTarget - ссылка на элемент (слушатель),
-// на который навешен обработчик
-// let closePopupByClickOnOverlay = function (event) {
-//     console.log(event.target, event.currentTarget);
-//     if (event.target !== event.currentTarget) {
-//         return;
-//     }
-//         closePopup();
-//     };
-// popupElement.addEventListener('click', closePopupByClickOnOverlay);
-
-// обработчик «отправки» формы
-function handleFormSubmit(event) {
+//добавить обработчик «отправки» формы
+function handleProfileFormSubmit(event) {
+  // отменяем стандартное поведение формы
   event.preventDefault();
+  //задаем значения имен
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
-  closePopup();
+  //закрываем попап
+  closeProfilePopup();
 }
-
 // зарегистрировать обработчики событий по клику
-popupOpenButtonElement.addEventListener("click", openPopup);
-popupCloseButtonElement.addEventListener("click", closePopup);
-
+popupOpenButtonElement.addEventListener("click", openProfilePopup);
+popupCloseButtonElement.addEventListener("click", closeProfilePopup);
 // прикрепляем обработчик к форме:
-submitForm.addEventListener("submit", handleFormSubmit);
+profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
 
-//добавляем карточки
-const initialCards = [
-  {
-    name: "Ала-Куль",
-    link: "./images/alakol-unsplash.jpg",
-    alt: "озеро с голубой водой в горах",
-  },
-  {
-    name: "Каракол",
-    link: "./images/karakol-unsplash.jpg",
-    alt: "ели в снегу на фоне голубого неб",
-  },
-  {
-    name: "Кегеты",
-    link: "./images/kegety-unsplash.jpg",
-    alt: "горное ущелье с зелеными елями",
-  },
-  {
-    name: "Нарын",
-    link: "./images/naryn-unsplash.jpg",
-    alt: "пастух на лошади на фоне гор",
-  },
-  {
-    name: "Сон-Куль",
-    link: "./images/sonkul-unsplash.jpg",
-    alt: "юрта на фоне озера",
-  },
-  {
-    name: "Иссык-Куль",
-    link: "./images/issykul-unsplash.jpg",
-    alt: "прозрачное озеро с камнями",
-  },
-];
 
-const elements = document.querySelector(".elements");
-const elementTemplate = document.querySelector("#elementTemplate").content;
+/**
+ * добавление пользовательских карточек
+ */
+const cardsContainer = document.querySelector(".elements");
+const elementTemplate = document.querySelector("#elementTemplate").content.querySelector(".element");
 
-const createElement = (element) => {
+const createCard = (element) => {
+  //клонировать шаблон и создать референсы для дочерних элементов
   const newElement = elementTemplate.cloneNode(true);
   const elementTitle = newElement.querySelector(".element__title");
-  elementTitle.textContent = element.name;
   const elementImage = newElement.querySelector(".element__image");
-  elementImage.setAttribute("src", element.link);
-  elementImage.setAttribute("alt", element.alt);
-  elementImage.dataset.id = element.name;
   const deleteButton = newElement.querySelector(".element__delete-button");
+
+  //задать атрибуты новым элементам
+  elementTitle.textContent = element.name;
+  elementImage.setAttribute("src", element.link);
+  elementImage.setAttribute("alt", element.name);
+  elementImage.dataset.id = element.name;
+
+  //добавить отработчик удаления
   deleteButton.addEventListener("click", handleDeleteButton);
-  elements.prepend(newElement);
-  //добавляем лайки
+
+  // добавляем новый элемент
+  cardsContainer.prepend(newElement);
+
+  // const renderCard = (element) => {
+//   cardsContainer.prepend(element)
+// }
+
+// initialCards.forEach (element => {
+//   renderCard(createCard(element))
+// })
+
+  //добавляем отработчик лайков
   const likeButton = document.querySelector(".element__like-button");
   const handleLike = () => {
     likeButton.classList.toggle("element__like-button_active");
   };
-  likeButton.addEventListener("click", handleLike);
-  // //добавляем увеличение картинки
-  const popupImage = document.querySelector(".zoom-popup");
-  const showImage = document.querySelector(".element__image");
-  const popupImageCloseButton = document.querySelector(".zoom-popup__close");
-  const zoomImage = document.querySelector(".popup__image");
-  const zoomImageName = document.querySelector(".popup__image-caption");
+    likeButton.addEventListener("click", handleLike);
 
+  /**
+   * показать увеличенную картинку карточки
+   */
   function handlePopupImageOpen() {
     zoomImage.setAttribute("src", element.link);
-    zoomImage.setAttribute("alt", element.alt);
+    zoomImage.setAttribute("alt", element.name);
     zoomImageName.textContent = element.name;
 
     popupImage.classList.add("popup_opened");
@@ -119,54 +106,54 @@ const createElement = (element) => {
   function handlePopupImageClose() {
     popupImage.classList.remove("popup_opened");
   }
+  elementImage.addEventListener("click", handlePopupImageOpen);
   popupImageCloseButton.addEventListener("click", handlePopupImageClose);
-  showImage.addEventListener("click", handlePopupImageOpen);
+
 };
 
-initialCards.forEach(createElement);
+initialCards.forEach(createCard);
 
-//удаление карточки
+/**
+ * удаление карточки из DOM
+ */
 function handleDeleteButton(event) {
+  //находим кнопку, по которой произошел клик
   const button = event.target;
+  //находим ближайший элемент к классу element
   const element = button.closest(".element");
+  //удаляем элемент
   element.remove();
 }
 
-//---------создание новой карточки----------//
-
+/**
+ * создание новой карточки
+ */
 // находим кнопку на странице
 const addButton = document.querySelector(".profile__add-button");
-
 // находим попап на странице
 const popupAdd = document.querySelector(".newitem-popup");
-
 // находим форму внутри попапа
 const formAdd = document.querySelector(".newitem-form");
-
-// находим сабмит внутри попапа
-const popupSubmit = document.querySelector(".newitem-form__submit-button");
-
+// находим кнопку сабмита внутри попапа
+const popupSubmitButton = document.querySelector(".newitem-form__submit-button");
 //находим кнопку закрытия попапа
 const popupAddCloseButton = document.querySelector(".newitem-popup__close");
-
 //находим инпут заголовка внутри формы
 const titleInput = document.querySelector(".form__input_type_title");
-
 //находим инпут линка внутри формы
 const linkInput = document.querySelector(".form__input_type_link");
-
 // добавляем обработчик событий на кнопку
 addButton.addEventListener("click", () => {
   // открываем попап
   popupAdd.classList.add("popup_opened");
 });
 
-// закрываем попап по клику
-popupSubmit.addEventListener("click", () => {
+//закрываем попап по сабмиту
+popupSubmitButton.addEventListener("click", () => {
   popupAdd.classList.remove("popup_opened");
 });
+//закрываем попап по крестику
 
-// закрываем попап по крестику
 popupAddCloseButton.addEventListener("click", () => {
   popupAdd.classList.remove("popup_opened");
 });
@@ -176,16 +163,20 @@ formAdd.addEventListener("submit", handleAddFormSubmit);
 function handleAddFormSubmit(event) {
   // отменяем стандартное поведение формы
   event.preventDefault();
-  // добавляем карточку
+  
+  // находим значения полей для новой карточки карточку
   const formAdd = event.target;
   const title = titleInput.value;
   const link = linkInput.value;
+  //создаем карточку с параметрами пользователя
   const newElement = {
     name: title,
     link: link,
   };
-  createElement(newElement);
+  createCard(newElement);
+  // сбрасываем введенные значения формы
+  formAdd.reset();
 }
 
-// сбрасываем значения формы
-formAdd.reset();
+
+
