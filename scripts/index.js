@@ -76,15 +76,8 @@ const createCard = (element) => {
   deleteButton.addEventListener("click", handleDeleteButton);
 
   // добавляем новый элемент
-  cardsContainer.prepend(newElement);
+  return newElement;
 
-  // const renderCard = (element) => {
-//   cardsContainer.prepend(element)
-// }
-
-// initialCards.forEach (element => {
-//   renderCard(createCard(element))
-// })
 
   //добавляем отработчик лайков
   const likeButton = document.querySelector(".element__like-button");
@@ -108,10 +101,20 @@ const createCard = (element) => {
   }
   elementImage.addEventListener("click", handlePopupImageOpen);
   popupImageCloseButton.addEventListener("click", handlePopupImageClose);
+  
 
 };
 
 initialCards.forEach(createCard);
+
+  const renderCard = (element) => {
+  cardsContainer.prepend(element)
+};
+
+initialCards.forEach (element => {
+  renderCard(createCard(element))
+});
+
 
 /**
  * удаление карточки из DOM
@@ -173,7 +176,7 @@ function handleAddFormSubmit(event) {
     name: title,
     link: link,
   };
-  createCard(newElement);
+  renderCard(newElement);
   // сбрасываем введенные значения формы
   formAdd.reset();
 }
