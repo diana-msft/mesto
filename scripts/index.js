@@ -16,15 +16,15 @@ const popupImageCloseButton = document.querySelector(".zoom-popup__close");
 const zoomImage = document.querySelector(".popup__image");
 const zoomImageName = document.querySelector(".popup__image-caption");
 
-//попап
-//добавить класс
-function openPopup(popupElement) {
-  popupElement.classList.add('popup_opened');
-}
-//удалить класс
-function closePopup(popupElement) {
-  popupElement.classList.remove('popup_opened');
-}
+// //попап
+// //добавить класс
+// function openPopup(popupElement) {
+//   popupElement.classList.add('popup_opened');
+// }
+// //удалить класс
+// function closePopup(popupElement) {
+//   popupElement.classList.remove('popup_opened');
+// }
 
 //добавить переключатели модификатора
 const openProfilePopup = function () {
