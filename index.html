@@ -53,9 +53,9 @@
       <p class="footer__copyright">&copy;2023 Mesto Kyrgyzstan</p>
     </footer>
     <!-- profile edition pop-up -->
-    <div class="popup">
+    <div class="popup profile-popup">
       <div class="popup__container">
-        <button class="popup__close" type="button"></button>
+        <button class="popup__close profile-popup__close" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="form profile-form" name="add-data">
           <fieldset class="form__container">
@@ -64,18 +64,16 @@
               name="name"
               type="text"
               placeholder="Имя"
-              value="">
+              value=""
+              required>
             <input
               class="form__input form__input_type_job"
               name="job"
               type="text"
               placeholder="О себе"
-              value="">
-            <button
-              type="submit"
-              class="form__submit-button">
-              Сохранить
-            </button>
+              value=""
+              required>
+            <button type="submit" class="form__submit-button">Сохранить</button>
           </fieldset>
         </form>
       </div>
@@ -83,7 +81,10 @@
     <!-- new item pop-up -->
     <div class="popup newitem-popup">
       <div class="popup__container">
-        <button class="popup__close newitem-popup__close" type="button"></button>
+        <button
+          class="popup__close newitem-popup__close"
+          type="button">
+        </button>
         <h2 class="popup__title">Новое место</h2>
         <form class="form newitem-form" name="add-data">
           <fieldset class="form__container">
@@ -92,13 +93,15 @@
               name="title"
               type="text"
               placeholder="Название"
-              value="">
+              value=""
+              required>
             <input
               class="form__input form__input_type_link"
               name="link"
               type="url"
               placeholder="Ссылка на картинку"
-              value="">
+              value=""
+              required>
             <button
               type="submit"
               class="form__submit-button newitem-form__submit-button">
@@ -117,6 +120,7 @@
       </div>
     </div>
     <!---script-->
+    <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
