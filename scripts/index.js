@@ -1,7 +1,7 @@
 //сделать выборку DOM элементов для профиля
-const popupElement = document.querySelector(".profile-popup");
-const popupCloseButtonElement = popupElement.querySelector(".profile-popup__close");
-const popupOpenButtonElement = document.querySelector(".profile__edit-button");
+const popupProfile = document.querySelector(".profile-popup");
+const buttonClosePopupProfile = popupProfile.querySelector(".profile-popup__close");
+const buttonOpenPopupProfile = document.querySelector(".profile__edit-button");
 const nameInput = document.querySelector(".form__input_type_name");
 const jobInput = document.querySelector(".form__input_type_job");
 const profileTitle = document.querySelector(".profile__title");
@@ -39,12 +39,12 @@ function closePopup(popup) {
  */
 //добавить переключатели модификатора
 const openProfilePopup = function () {
-  openPopup(popupElement);
+  openPopup(popupProfile);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
 };
 const closeProfilePopup = function () {
-  closePopup(popupElement);
+  closePopup(popupProfile);
 };
 
 //добавить обработчик «отправки» формы
@@ -55,11 +55,11 @@ function handleProfileFormSubmit(event) {
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
   //закрываем попап
-  closePopup(popupElement);
+  closePopup(popupProfile);
 }
 // зарегистрировать обработчики событий по клику
-popupOpenButtonElement.addEventListener("click", openProfilePopup);
-popupCloseButtonElement.addEventListener("click", closeProfilePopup);
+buttonOpenPopupProfile.addEventListener("click", openProfilePopup);
+buttonClosePopupProfile.addEventListener("click", closeProfilePopup);
 // прикрепляем обработчик к форме:
 profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
 
