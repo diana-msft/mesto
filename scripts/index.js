@@ -42,22 +42,6 @@ function handleOverlayClick(event) {
   }
 }
 
-// /**  
-//  * добавить функцию клик вне попапа
-//  */
-// // target - ссылка на элемент, который вызвал событие
-// // currentTarget - ссылка на элемент (слушатель),
-// // на который навешен обработчик
-// let closePopupByClickOnOverlay = function (event) {
-//     console.log(event.target, event.currentTarget);
-//     if (event.target !== event.currentTarget) {
-//         return;
-//     }
-//         closePopup();
-//     };
-// popup.addEventListener('click', closePopupByClickOnOverlay);
-
-
 /**
  * добавть попап изменения данных в профиле
  */
