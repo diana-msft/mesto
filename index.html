@@ -110,16 +110,21 @@
               type="text"
               placeholder="Название"
               value=""
+              minlength="2"
+              maxlength="30"
               required
             />
+            <span class="form__input-error" id="title-error"></span>
             <input
               class="form__input form__input_type_link"
               name="link"
+              id="link"
               type="url"
               placeholder="Ссылка на картинку"
               value=""
               required
             />
+            <span class="form__input-error" id="link-error"></span>
             <button
               type="submit"
               class="form__submit-button newitem-form__submit-button"

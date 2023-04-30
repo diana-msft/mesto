@@ -29,18 +29,29 @@ const linkInput = document.querySelector(".form__input_type_link");
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   popup.addEventListener("click", handleOverlayClick);
+  document.addEventListener("keydown", handleEscPress);
 }
 //удалить класс
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  //добавить функцию клик вне попапа
   popup.removeEventListener("click", handleOverlayClick);
+  document.removeEventListener("keydown", handleEscPress);
 }
+  //добавить функцию закрытия кликом вне попапа
 function handleOverlayClick(event) {
   if (event.target === event.currentTarget) {
     closePopup(event.target);
   }
 }
+  //добавить закрытие попапа по кнопке ESC
+  function handleEscPress(event) {
+    if (event.key === "Escape") {
+      const openedPopup = document.querySelector(".popup_opened");
+      if (openedPopup) {
+        closePopup(openedPopup);
+      }
+    }
+  }
 
 /**
  * добавть попап изменения данных в профиле
