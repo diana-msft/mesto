@@ -28,11 +28,35 @@ const linkInput = document.querySelector(".form__input_type_link");
 //добавить класс
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  popup.addEventListener("click", handleOverlayClick);
 }
 //удалить класс
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  //добавить функцию клик вне попапа
+  popup.removeEventListener("click", handleOverlayClick);
 }
+function handleOverlayClick(event) {
+  if (event.target === event.currentTarget) {
+    closePopup(event.target);
+  }
+}
+
+// /**  
+//  * добавить функцию клик вне попапа
+//  */
+// // target - ссылка на элемент, который вызвал событие
+// // currentTarget - ссылка на элемент (слушатель),
+// // на который навешен обработчик
+// let closePopupByClickOnOverlay = function (event) {
+//     console.log(event.target, event.currentTarget);
+//     if (event.target !== event.currentTarget) {
+//         return;
+//     }
+//         closePopup();
+//     };
+// popup.addEventListener('click', closePopupByClickOnOverlay);
+
 
 /**
  * добавть попап изменения данных в профиле
