@@ -67,7 +67,7 @@ function enableValidation(config) {
   }
 
   
-  //
+  //деактивация кнопки
   function enableButton(button, disableButtonClass) {
     button.classList.remove(disableButtonClass);
     button.disabled = false;
