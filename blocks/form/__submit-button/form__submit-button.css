@@ -22,6 +22,14 @@
   cursor: pointer;
 }
 
+.form__submit-button:disabled {
+  background-color: #E5E5E5;
+  color: #000000;
+  opacity: 0.2;
+  border: 1px solid #000000;
+  cursor: default;
+}
+
 @media screen and (max-width: 535px) {
   .form__submit-button {
     font-size: 14px;

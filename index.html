@@ -62,7 +62,7 @@
           type="button"
         ></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="form profile-form" name="edit-form" novalidate>
+        <form class="form profile-form" name="edit-form">
           <fieldset class="form__container">
             <input
               class="form__input form__input_type_name"
@@ -75,7 +75,7 @@
               maxlength="40"
               required
             />
-            <span class="form__input-error" id="name-error"></span>
+            <span class="form__error form__error_type_name"></span>
             <input
               class="form__input form__input_type_job"
               name="job"
@@ -87,7 +87,7 @@
               maxlength="200"
               required
             />
-            <span class="form__input-error" id="job-error"></span>
+            <span class="form__error form__error_type_job"></span>
             <button type="submit" class="form__submit-button">Сохранить</button>
           </fieldset>
         </form>
@@ -101,7 +101,7 @@
           type="button"
         ></button>
         <h2 class="popup__title">Новое место</h2>
-        <form class="form newitem-form" name="add-form" novalidate>
+        <form class="form newitem-form" name="add-form">
           <fieldset class="form__container">
             <input
               class="form__input form__input_type_title"
@@ -114,7 +114,7 @@
               maxlength="30"
               required
             />
-            <span class="form__input-error" id="title-error"></span>
+            <span class="form__error form__error_type_title"></span>
             <input
               class="form__input form__input_type_link"
               name="link"
@@ -124,7 +124,7 @@
               value=""
               required
             />
-            <span class="form__input-error" id="link-error"></span>
+            <span class="form__error form__error_type_link"></span>
             <button
               type="submit"
               class="form__submit-button newitem-form__submit-button"

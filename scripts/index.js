@@ -58,6 +58,7 @@ function handleOverlayClick(event) {
  */
 //добавить переключатели модификатора
 const openProfilePopup = function () {
+  resetErrorForm(profileFormSubmit);
   openPopup(popupProfile);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
