@@ -24,7 +24,9 @@ const popupAddCloseButton = document.querySelector(".newitem-popup__close");
 const titleInput = document.querySelector(".form__input_type_title");
 const linkInput = document.querySelector(".form__input_type_link");
 
-//поведение попапов
+/**
+ * поведение попапов
+ */
 //добавить класс
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -75,9 +77,7 @@ const openProfilePopup = function () {
   jobInput.value = profileSubtitle.textContent;
   openPopup(popupProfile);
 };
-// const closeProfilePopup = function () {
-//   closePopup(popupProfile);
-// };
+
 
 //добавить обработчик «отправки» формы
 function handleProfileFormSubmit(event) {
@@ -91,8 +91,6 @@ function handleProfileFormSubmit(event) {
 }
 // зарегистрировать обработчики событий по клику
 buttonOpenPopupProfile.addEventListener("click", openProfilePopup);
-
-
 
 // прикрепляем обработчик к форме:
 profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
@@ -159,7 +157,6 @@ function handleDeleteButton(event) {
   //удаляем элемент
   element.remove();
 }
-
 
 /**
  * создание новой карточки
