@@ -78,7 +78,6 @@ const openProfilePopup = function () {
   openPopup(popupProfile);
 };
 
-
 //добавить обработчик «отправки» формы
 function handleProfileFormSubmit(event) {
   // отменяем стандартное поведение формы
@@ -186,7 +185,6 @@ function handleAddFormSubmit(event) {
   event.preventDefault();
   
   // находим значения полей для новой карточки 
-  const formAdd = event.target;
   const title = titleInput.value;
   const link = linkInput.value;
   //создаем карточку с параметрами пользователя

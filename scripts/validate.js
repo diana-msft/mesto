@@ -18,9 +18,16 @@ function enableValidation(config) {
   forms.forEach((form) => {
     const inputs = form.querySelectorAll(config.inputSelector);
     const button = form.querySelector(config.submitButtonSelector);
+    
     hangEventListeners(inputs, button, config.errorSelectorTemplate, config.disableButtonClass, config.inputErrorClass, config.textErrorClass);
   })
 }
+
+// // деактивируем кнопку при 1й загрузке сайта
+// toggleButtonState(inputs, button, settings);
+// formElement.addEventListener('reset', () => {
+// disableButton(button, disableButtonClass)
+// });
 
   function hangEventListeners(inputs, button, errorSelectorTemplate, disableButtonClass, inputErrorClass, textErrorClass) {
     inputs.forEach((input) => {
@@ -28,7 +35,6 @@ function enableValidation(config) {
         checkInputValidity(input, errorSelectorTemplate, inputErrorClass, textErrorClass);
         toggleButtonState(inputs, button, disableButtonClass);
       })
-      
     })
   }
 
