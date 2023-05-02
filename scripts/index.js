@@ -6,7 +6,7 @@ const nameInput = document.querySelector(".form__input_type_name");
 const jobInput = document.querySelector(".form__input_type_job");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
-const profileFormSubmit = document.querySelector(".profile-form");
+const profileFormSubmit = document.forms["profile-form"];
 //добавляем выборку для увеличения картинки
 const popupImage = document.querySelector(".zoom-popup");
 const popupImageCloseButton = document.querySelector(".zoom-popup__close");
@@ -18,7 +18,7 @@ const elementTemplate = document.querySelector("#elementTemplate").content.query
 //добавление новых карточек
 const addButton = document.querySelector(".profile__add-button");
 const popupAdd = document.querySelector(".newitem-popup");
-const formAdd = document.querySelector(".newitem-form");
+const formAdd = document.forms["newitem-form"];
 const popupSubmitButton = document.querySelector(".newitem-form__submit-button");
 const popupAddCloseButton = document.querySelector(".newitem-popup__close");
 const titleInput = document.querySelector(".form__input_type_title");
@@ -37,6 +37,18 @@ function closePopup(popup) {
   popup.removeEventListener("click", handleOverlayClick);
   document.removeEventListener("keydown", handleEscPress);
 }
+//обработчики крестиков
+// находим все крестики проекта по универсальному селектору
+const closeButtons = document.querySelectorAll('.popup__close');
+// с окончанием `s` нужно обязательно, так как много кнопок
+closeButtons.forEach((button) => {
+// находим 1 раз ближайший к крестику попап 
+const popup = button.closest('.popup');
+// устанавливаем обработчик закрытия на крестик
+button.addEventListener('click', () => closePopup(popup));
+});
+
+
   //добавить функцию закрытия кликом вне попапа
 function handleOverlayClick(event) {
   if (event.target === event.currentTarget) {
@@ -63,9 +75,9 @@ const openProfilePopup = function () {
   jobInput.value = profileSubtitle.textContent;
   openPopup(popupProfile);
 };
-const closeProfilePopup = function () {
-  closePopup(popupProfile);
-};
+// const closeProfilePopup = function () {
+//   closePopup(popupProfile);
+// };
 
 //добавить обработчик «отправки» формы
 function handleProfileFormSubmit(event) {
@@ -79,7 +91,9 @@ function handleProfileFormSubmit(event) {
 }
 // зарегистрировать обработчики событий по клику
 buttonOpenPopupProfile.addEventListener("click", openProfilePopup);
-buttonClosePopupProfile.addEventListener("click", closeProfilePopup);
+
+
+
 // прикрепляем обработчик к форме:
 profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
 
@@ -119,11 +133,11 @@ const createCard = (element) => {
     zoomImageName.textContent = element.name;
     openPopup(popupImage);
   }
-  function handlePopupImageClose() {
-    closePopup(popupImage);
-  }
+  // function handlePopupImageClose() {
+  //   closePopup(popupImage);
+  // }
   elementImage.addEventListener("click", handlePopupImageOpen);
-  popupImageCloseButton.addEventListener("click", handlePopupImageClose);
+  // popupImageCloseButton.addEventListener("click", handlePopupImageClose);
 
   return newElement;
 };
@@ -164,10 +178,10 @@ addButton.addEventListener("click", () => {
 popupSubmitButton.addEventListener("click", () => {
   closePopup(popupAdd);
 });
-//закрываем попап по крестику
-popupAddCloseButton.addEventListener("click", () => {
-  closePopup(popupAdd);
-});
+// //закрываем попап по крестику
+// popupAddCloseButton.addEventListener("click", () => {
+//   closePopup(popupAdd);
+// });
 
 // добавляем обработчик событий на форму внутри попапа
 formAdd.addEventListener("submit", handleAddFormSubmit);
