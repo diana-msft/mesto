@@ -11,8 +11,6 @@ const validateConfig = {
   textErrorClass: 'form__error_type_active',
 };
 
-const log = console.log;
-
 enableValidation(validateConfig);
 
 function enableValidation(config) {

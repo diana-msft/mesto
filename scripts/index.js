@@ -133,11 +133,8 @@ const createCard = (element) => {
     zoomImageName.textContent = element.name;
     openPopup(popupImage);
   }
-  // function handlePopupImageClose() {
-  //   closePopup(popupImage);
-  // }
+  
   elementImage.addEventListener("click", handlePopupImageOpen);
-  // popupImageCloseButton.addEventListener("click", handlePopupImageClose);
 
   return newElement;
 };
@@ -163,14 +160,20 @@ function handleDeleteButton(event) {
   element.remove();
 }
 
+
 /**
  * создание новой карточки
  */
 
 // добавляем обработчик событий на кнопку
 addButton.addEventListener("click", () => {
-  //сбрасываем значения
+
+  // сбрасываем введенные значения формы и ошибки
+  formAdd.reset();
   resetErrorForm(formAdd);
+  //деактивировать кнопку
+  popupSubmitButton.disabled = true;
+
   // открываем попап
   openPopup(popupAdd);
 });
@@ -178,10 +181,6 @@ addButton.addEventListener("click", () => {
 popupSubmitButton.addEventListener("click", () => {
   closePopup(popupAdd);
 });
-// //закрываем попап по крестику
-// popupAddCloseButton.addEventListener("click", () => {
-//   closePopup(popupAdd);
-// });
 
 // добавляем обработчик событий на форму внутри попапа
 formAdd.addEventListener("submit", handleAddFormSubmit);
@@ -189,7 +188,7 @@ function handleAddFormSubmit(event) {
   // отменяем стандартное поведение формы
   event.preventDefault();
   
-  // находим значения полей для новой карточки карточку
+  // находим значения полей для новой карточки 
   const formAdd = event.target;
   const title = titleInput.value;
   const link = linkInput.value;
@@ -199,10 +198,5 @@ function handleAddFormSubmit(event) {
     link: link,
   };
   //создаем карточку
-  renderCard(createCard(newElement));
-  // сбрасываем введенные значения формы
-  formAdd.reset();
+  renderCard(createCard(newElement)); 
 }
-
-
-
