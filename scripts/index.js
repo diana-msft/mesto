@@ -1,3 +1,5 @@
+import initialCards from "./Card.js";
+
 //сделать выборку DOM элементов для профиля
 const popupProfile = document.querySelector(".profile-popup");
 const buttonClosePopupProfile = popupProfile.querySelector(".profile-popup__close");
@@ -15,6 +17,7 @@ const zoomImageName = document.querySelector(".popup__image-caption");
 //добавляем в выборку карточки
 const cardsContainer = document.querySelector(".elements");
 const elementTemplate = document.querySelector("#elementTemplate").content.querySelector(".element");
+const selectorTemplate = "#elementTemplate";
 //добавление новых карточек
 const addButton = document.querySelector(".profile__add-button");
 const popupAdd = document.querySelector(".newitem-popup");
@@ -97,29 +100,62 @@ profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
 
 /**
  * добавление пользовательских карточек
+ * создание экземпляра класса
  */
-const createCard = (element) => {
-  //клонировать шаблон и создать референсы для дочерних элементов
-  const newElement = elementTemplate.cloneNode(true);
-  const elementTitle = newElement.querySelector(".element__title");
-  const elementImage = newElement.querySelector(".element__image");
-  const deleteButton = newElement.querySelector(".element__delete-button");
-  
-  //задать атрибуты новым элементам
-  elementTitle.textContent = element.name;
-  elementImage.setAttribute("src", element.link);
-  elementImage.setAttribute("alt", element.name);
-  elementImage.dataset.id = element.name;
 
-  //добавить отработчик удаления
-  deleteButton.addEventListener("click", handleDeleteButton);
+class Card {
+  constructor(element, selectorTemplate, handlePopupImageOpen) {
+    //передаем параметры: имя ссылка селектор шалблона и обработчик попапа с изображением
+    this._element = element;
+    this._link = element.link;
+    this._name = element.name;
+    this._selectorTemplate = selectorTemplate;
+    this._handlePopupImageOpen = handlePopupImageOpen;
+  }
 
-  //добавляем отработчик лайков
-  const likeButton = newElement.querySelector(".element__like-button");
-  const handleLike = () => {
-    likeButton.classList.toggle("element__like-button_active");
-  };
-    likeButton.addEventListener("click", handleLike);
+  //получение клонированного элемента из шаблона
+  _getTemplateClone() {
+    return document.querySelector(this._selectorTemplate).content.querySelector(".element").cloneNode(true)
+  }
+
+  //создание карточки элемента
+  createCard() {
+    this._newElement = this._getTemplateClone();
+    this._elementTitle = this._newElement.querySelector(".element__title");
+    this._elementImage = this._newElement.querySelector(".element__image");
+    this._elementDeleteButton = this._newElement.querySelector(".element__delete-button");
+    this._elementLikeButton = this._newElement.querySelector(".element__like-button");
+    this._elementImage.src = this._link;
+    this._elementImage.alt = this._name;
+    this._elementTitle.textContent = this._name;
+    return this._newElement;
+
+  }
+}
+
+
+// const createCard = (element) => {
+//   //клонировать шаблон и создать референсы для дочерних элементов
+//   const newElement = elementTemplate.cloneNode(true);
+//   const elementTitle = newElement.querySelector(".element__title");
+//   const elementImage = newElement.querySelector(".element__image");
+  // const deleteButton = newElement.querySelector(".element__delete-button");
+  // const likeButton = newElement.querySelector(".element__like-button");
+
+//   //задать атрибуты новым элементам
+//   elementTitle.textContent = element.name;
+//   elementImage.setAttribute("src", element.link);
+//   elementImage.setAttribute("alt", element.name);
+//   elementImage.dataset.id = element.name;
+
+  // добавить отработчик удаления
+  // deleteButton.addEventListener("click", handleDeleteButton);
+
+  // добавляем отработчик лайков
+  // const handleLike = () => {
+  //   likeButton.classList.toggle("element__like-button_active");
+  // };
+  //   likeButton.addEventListener("click", handleLike);
 
   /**
    * показать увеличенную картинку карточки
@@ -131,17 +167,20 @@ const createCard = (element) => {
     openPopup(popupImage);
   }
   
-  elementImage.addEventListener("click", handlePopupImageOpen);
+  // elementImage.addEventListener("click", handlePopupImageOpen);
 
-  return newElement;
-};
+  // return newElement;
+// };
 
 //добавляем карточки после обновления страницы
 const renderCard = (element) => {
   cardsContainer.prepend(element)
 };
 initialCards.forEach (element => {
-  renderCard(createCard(element))
+  const card = new Card(element, selectorTemplate, handlePopupImageOpen);
+  // renderCard(createCard(element))
+  renderCard(card.createCard());
+  // console.log(card)
 });
 
 
@@ -195,3 +234,4 @@ function handleAddFormSubmit(event) {
   //создаем карточку
   renderCard(createCard(newElement)); 
 }
+

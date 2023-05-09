@@ -94,4 +94,6 @@ function enableValidation(config) {
       errorTextElement.classList.remove(textErrorClass);
       errorTextElement.textContent = '';
     }
-  }
+  };
+
+  // export default FormValidator;

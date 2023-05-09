@@ -24,3 +24,5 @@ const initialCards = [
     link: "./images/issykul-unsplash.jpg",
   },
 ];
+
+export default initialCards;
