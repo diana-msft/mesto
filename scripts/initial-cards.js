@@ -1,4 +1,4 @@
-const initialCards = [
+ export const initialCards = [
   {
     name: "Ала-Куль",
     link: "./images/alakol-unsplash.jpg",
@@ -24,5 +24,3 @@ const initialCards = [
     link: "./images/issykul-unsplash.jpg",
   },
 ];
-
-export default initialCards;
