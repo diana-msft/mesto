@@ -1,4 +1,5 @@
 import {initialCards} from "./initial-cards.js";
+import {Card} from "./Card.js";
 
 //сделать выборку DOM элементов для профиля
 const popupProfile = document.querySelector(".profile-popup");
@@ -109,83 +110,7 @@ profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
 
 /**
  * добавление пользовательских карточек
- * создание экземпляра класса
  */
-
-class Card {
-  constructor(element, selectorTemplate, openImagePopup) {
-    //передаем параметры: имя ссылка селектор шалблона и обработчик попапа с изображением
-    this._element = element;
-    this._link = element.link;
-    this._name = element.name;
-    this._selectorTemplate = selectorTemplate;
-    this._openImagePopup = openImagePopup;
-  }
-
-  //получение клонированного элемента из шаблона
-  _getTemplateClone() {
-    return document.querySelector(this._selectorTemplate).content.querySelector(".element").cloneNode(true)
-  }
-
-  //добавляем слушатели
-
-  // добавить отработчик удаления
-  // deleteButton.addEventListener("click", handleDeleteButton);
-
-  // добавляем отработчик лайков
-  // const handleLike = () => {
-  //   likeButton.classList.toggle("element__like-button_active");
-  // };
-  //   likeButton.addEventListener("click", handleLike);
-
-  _handleLike = () => {
-    this._elementLikeButton.classList.toggle("element__like-button_active");
-  }
-
-  _handleDelete = () => {
-    this._newElement.remove();
-  }
-
-  _handleOpenPopupImage = () => {
-    this._openImagePopup(this._element);
-    console.log(this);
-  }
-
-  _setEventListeners () {
-    this._elementLikeButton.addEventListener('click', this._handleLike);
-    this._elementDeleteButton.addEventListener('click', this._handleDelete);
-    this._elementImage.addEventListener('click', this._handleOpenPopupImage);
-
-    // this._card.querySelector('.card__image').addEventListener('click', () => {
-		// 	this._openLightbox();
-		// });
-
-		// this._card.querySelector('.card__like-icon').addEventListener('click', (e) => {
-		// 	e.target.classList.toggle("card__like-icon_liked");
-		// });
-
-		// this._card.querySelector('.card__delete-icon').addEventListener('click', (e) => {
-		// 	e.target.closest(".card").remove();
-		// });
-  }
-
-  //создание карточки элемента
-  createCard() {
-    this._newElement = this._getTemplateClone();
-    this._elementTitle = this._newElement.querySelector(".element__title");
-    this._elementImage = this._newElement.querySelector(".element__image");
-    this._elementDeleteButton = this._newElement.querySelector(".element__delete-button");
-    this._elementLikeButton = this._newElement.querySelector(".element__like-button");
-    this._elementImage.src = this._link;
-    this._elementImage.alt = this._name;
-    this._elementTitle.textContent = this._name;
-    this._setEventListeners();
-    return this._newElement;
-
-  }
-}
-
-
 // const createCard = (element) => {
 //   //клонировать шаблон и создать референсы для дочерних элементов
 //   const newElement = elementTemplate.cloneNode(true);
