@@ -2,7 +2,6 @@
 // все настройки передаются при вызове
 
 const validateConfig = {
-  allforms: document.forms,
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit-button',
   errorSelectorTemplate: '.form__error_type_',
@@ -96,4 +95,3 @@ function enableValidation(config) {
     }
   };
 
-  // export default FormValidator;

@@ -1,5 +1,6 @@
 import initialCards from "./initial-cards.js";
 import Card from "./Card.js";
+// import FormValidator from "./FormValidator.js";
 
 const elementsContainer = document.querySelector(".elements");
 const addButton = document.querySelector(".profile__add-button");
@@ -23,6 +24,15 @@ const zoomImage = document.querySelector(".popup__image");
 const zoomImageName = document.querySelector(".popup__image-caption");
 
 const selectorTemplate = "#elementTemplate";
+
+const validateConfig = {
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit-button',
+  errorSelectorTemplate: '.form__error_type_',
+  disableButtonClass: 'form__submit-button:disabled',
+  inputErrorClass: 'form__input_type_invalid',
+  textErrorClass: 'form__error_type_active',
+};
 
 /**
  * поведение попапов
@@ -109,6 +119,52 @@ const renderCard = function(elementsContainer, card) {
 initialCards.forEach (element => {
   renderCard(elementsContainer, createCard(element))
 });
+
+
+class FormValidator {
+  constructor(config, form) {
+    this._inputSelector = config.inputSelector;
+    this._submitButtonSelector = config.submitButtonSelector;
+    this._errorSelectorTemplate = config.errorSelectorTemplate;
+    this._disableButtonClass = config.disableButtonClass;
+    this._inputErrorClass = config.inputErrorClass;
+    this._textErrorClass = config.textErrorClass;
+    this._form = form;
+  }
+
+  _hideInputError(input) {
+    
+  }
+
+  _showInputError(input) {
+    
+  }
+  
+  _checkInputValidity(input) {
+    const errorTextElement = this._form.querySelector(`${this._errorSelectorTemplate}${input.name}`);
+    if (input.validity.valid) {
+      _hideInputError(input, errorTextElement, inputErrorClass, textErrorClass);
+    } else {
+      _showInputError(input, errorTextElement, textErrorClass);
+    }
+  }
+
+  _setEventListeners() {
+    this._inputs.forEach((input) => {
+      input.addEventListener("input", () => {
+        this._checkInputValidity(input);
+        this._toggleButtonState();
+      })
+    })
+  }
+
+  enableValidation() {
+    this._button = this._form.querySelector(this._submitButtonSelector);
+    this._inputs = this._form.querySelectorAll(this._inputSelector);
+    this._setEventListeners();
+  }
+}
+
 
 addButton.addEventListener("click", () => {
   formAdd.reset();
