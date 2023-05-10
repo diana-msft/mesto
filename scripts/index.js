@@ -151,7 +151,3 @@ const handleAddFormSubmit = function(event) {
 
 formAdd.addEventListener("submit", handleAddFormSubmit);
 
-
-///////////////////господи помоги чтобы эта херня заработала!!!!!!!!!!!////////////////////
-
-
