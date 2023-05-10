@@ -45,7 +45,8 @@ class FormValidator {
 
   //переключение кнопки
   _toggleButtonState() {
-    this._hasValidInput(this._inputs) ? this._disableButton(this._button, this._disableButtonClass): this._enableButton(this._button, this._disableButtonClass)
+    this._hasValidInput(this._inputs) ? this._disableButton(this._button, this._disableButtonClass): 
+    this._enableButton(this._button, this._disableButtonClass)
   }
 
   _hasValidInput() {
