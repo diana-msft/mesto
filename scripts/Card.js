@@ -1,5 +1,4 @@
-
-export class Card {
+class Card {
   constructor(element, selectorTemplate, openImagePopup) {
     //передаем параметры: имя ссылка селектор шалблона и обработчик попапа с изображением
     this._element = element;
@@ -47,3 +46,5 @@ export class Card {
     return this._newElement;
   }
 }
+
+export default Card;
