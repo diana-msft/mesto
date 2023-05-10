@@ -73,7 +73,7 @@ button.addEventListener('click', () => closePopup(popup));
  */
 const openProfilePopup = function () {
   // resetErrorForm(profileFormSubmit);
-  FormProfileValidator.resetErrorForm(profileFormSubmit);
+  FormProfileValidator.resetErrorForm();
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
   openPopup(popupProfile);
@@ -221,7 +221,7 @@ console.log(FormAddValidator);
 addButton.addEventListener("click", () => {
   formAdd.reset();
   // resetErrorForm(formAdd);
-  FormAddValidator.resetErrorForm(formAdd);
+  FormAddValidator.resetErrorForm();
   popupSubmitButton.disabled = true;
   openPopup(popupAdd);
 });
