@@ -131,7 +131,6 @@ FormAddValidator.enableValidation();
 addButton.addEventListener("click", () => {
   formAdd.reset();
   FormAddValidator._resetErrors();
-  popupSubmitButton.disabled = true;
   openPopup(popupAdd);
 });
 
