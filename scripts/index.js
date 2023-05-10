@@ -72,7 +72,8 @@ button.addEventListener('click', () => closePopup(popup));
  * попап изменения данных в профиле
  */
 const openProfilePopup = function () {
-  resetErrorForm(profileFormSubmit);
+  // resetErrorForm(profileFormSubmit);
+  FormProfileValidator.resetErrorForm(profileFormSubmit);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
   openPopup(popupProfile);
@@ -130,23 +131,51 @@ class FormValidator {
     this._inputErrorClass = config.inputErrorClass;
     this._textErrorClass = config.textErrorClass;
     this._form = form;
+    this._button = this._form.querySelector(this._submitButtonSelector);
+    this._inputs = this._form.querySelectorAll(this._inputSelector);
   }
 
-  _hideInputError(input) {
-    
+    //скрыть ошибку
+  _hideInputError(input, errorTextElement) {
+    input.classList.remove(this._inputErrorClass);
+    errorTextElement.textContent = "";
   }
 
-  _showInputError(input) {
+    //показать ошибку
+  _showInputError(input, errorTextElement) {
+    input.classList.add(this._inputErrorClass);
+    errorTextElement.textContent = input.validationMessage;
     
   }
   
+    // проверка на наличие невалидных инпутов
   _checkInputValidity(input) {
     const errorTextElement = this._form.querySelector(`${this._errorSelectorTemplate}${input.name}`);
     if (input.validity.valid) {
-      _hideInputError(input, errorTextElement, inputErrorClass, textErrorClass);
+      this._hideInputError(input, errorTextElement);
     } else {
-      _showInputError(input, errorTextElement, textErrorClass);
+      this._showInputError(input, errorTextElement);
     }
+  }
+
+  //деактивация кнопки
+  _enableButton() {
+    this._button.classList.remove(this._disableButtonClass);
+    this._button.disabled = false;
+  }
+
+  _disableButton() {
+    this._button.classList.add(this._disableButtonClass);
+    this._button.disabled = true;
+  }
+
+  //переключение кнопки
+  _toggleButtonState() {
+    this._hasValidInput(this._inputs) ? this._disableButton(this._button, this._disableButtonClass): this._enableButton(this._button, this._disableButtonClass)
+  }
+
+  _hasValidInput() {
+    return Array.from(this._inputs).some((input) => !input.validity.valid);
   }
 
   _setEventListeners() {
@@ -159,16 +188,40 @@ class FormValidator {
   }
 
   enableValidation() {
-    this._button = this._form.querySelector(this._submitButtonSelector);
-    this._inputs = this._form.querySelectorAll(this._inputSelector);
     this._setEventListeners();
+  }
+
+  //обнуление ошибок
+  resetErrorForm() {
+    this._inputs.forEach(input => {
+      const errorTextElement = this._form.querySelector(`${this._errorSelectorTemplate}${input.name}`);
+      if (!input.validity.valid) {
+        this._hideInputError(input, errorTextElement);
+      }
+    })
+    this._disableButton()
   }
 }
 
+// валидация для формы профиля
+const FormProfileValidator = new FormValidator(validateConfig, profileFormSubmit);
+FormProfileValidator.enableValidation();
+console.log(FormProfileValidator);
 
+// валидация для формы добавления карточки
+const FormAddValidator = new FormValidator(validateConfig, formAdd);
+FormAddValidator.enableValidation();
+console.log(FormAddValidator);
+
+
+
+/**
+ * добавление карточки
+ * */
 addButton.addEventListener("click", () => {
   formAdd.reset();
-  resetErrorForm(formAdd);
+  // resetErrorForm(formAdd);
+  FormAddValidator.resetErrorForm(formAdd);
   popupSubmitButton.disabled = true;
   openPopup(popupAdd);
 });
@@ -185,10 +238,13 @@ const handleAddFormSubmit = function(event) {
 
   renderCard(elementsContainer, card.createCard()); 
   formAdd.reset();
-  resetErrorForm(formAdd);
+  // resetErrorForm(formAdd);
   closePopup(popupAdd);
 };
 
 formAdd.addEventListener("submit", handleAddFormSubmit);
+
+
+///////////////////господи помоги чтобы эта херня заработала!!!!!!!!!!!////////////////////
 
 
