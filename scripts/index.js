@@ -20,7 +20,6 @@ const popupImage = document.querySelector(".zoom-popup");
 const zoomImage = document.querySelector(".popup__image");
 const zoomImageName = document.querySelector(".popup__image-caption");
 const closeButtons = document.querySelectorAll('.popup__close');
-const openedPopup = document.querySelector(".popup_opened");
 
 const selectorTemplate = "#elementTemplate";
 
@@ -38,24 +37,27 @@ const validateConfig = {
  */
 const openPopup = function(popup) {
   popup.classList.add('popup_opened');
-  popup.addEventListener("click", handleOverlayClick);
-  document.addEventListener("keydown", handleEscPress);
 }
+
 const closePopup = function(popup) {
   popup.classList.remove('popup_opened');
-  popup.removeEventListener("click", handleOverlayClick);
-  document.removeEventListener("keydown", handleEscPress);
 }
+
 const handleOverlayClick = function(event) {
-  if (event.target === event.currentTarget) {
-    closePopup(event.target);
+  const openedPopup = document.querySelector(".popup_opened");
+  if (event.target === openedPopup) {
+    closePopup(openedPopup);
   }
 }
 const handleEscPress = function(event) {
+  const openedPopup = document.querySelector(".popup_opened");
   if (event.key === "Escape") {
-    closePopup(document.querySelector('.popup_opened'));
+    closePopup(openedPopup);
   }
 }
+
+document.addEventListener("click", handleOverlayClick);
+document.addEventListener("keydown", handleEscPress);
 
 closeButtons.forEach((button) => {
 const popup = button.closest('.popup');
