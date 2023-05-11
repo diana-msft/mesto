@@ -96,16 +96,22 @@ profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
   };
 
 /**
- * создание карточки
+ * создание карточек
  */
 
-const createCard = function(element) {
-  const card = new Card(element, selectorTemplate, openImagePopup);
+const createCardElement = function(name, link) {
+  const card = new Card({name: name, link: link}, selectorTemplate, openImagePopup);
   return card.createCard();
 }
 
+const createCard = function() {
+  initialCards.forEach((element) => {
+    renderCard(elementsContainer, createCardElement(element.name, element.link));
+  })
+}
+
 /**
- * добавление карточек
+ * добавление новых карточек
  */
 const renderCard = function(elementsContainer, card) {
   elementsContainer.prepend(card)
@@ -140,9 +146,9 @@ const handleAddFormSubmit = function(event) {
   event.preventDefault();
   
   const cardData = {name: titleInput.value, link: linkInput.value};
-  const card = new Card (cardData, selectorTemplate, openImagePopup);
+  const cardElement = createCardElement(cardData.name, cardData.link);
 
-  renderCard(elementsContainer, card.createCard()); 
+  renderCard(elementsContainer, cardElement); 
   formAdd.reset();
   closePopup(popupAdd);
 };
