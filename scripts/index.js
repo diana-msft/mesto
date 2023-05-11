@@ -112,16 +112,11 @@ const createCard = function() {
   })
 }
 
-/**
- * добавление новых карточек
- */
 const renderCard = function(elementsContainer, card) {
   elementsContainer.prepend(card)
 };
 
-initialCards.forEach (element => {
-  renderCard(elementsContainer, createCard(element))
-});
+createCard();
 
 // валидация для формы профиля
 const FormProfileValidator = new FormValidator(validateConfig, profileFormSubmit);
@@ -132,7 +127,7 @@ const FormAddValidator = new FormValidator(validateConfig, formAdd);
 FormAddValidator.enableValidation();
 
 /**
- * добавление карточки
+ * добавление новой карточки
  * */
 addButton.addEventListener("click", () => {
   formAdd.reset();
