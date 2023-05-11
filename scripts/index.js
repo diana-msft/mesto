@@ -53,9 +53,7 @@ const handleOverlayClick = function(event) {
 }
 const handleEscPress = function(event) {
   if (event.key === "Escape") {
-    if (openedPopup) {
-      closePopup(openedPopup);
-    }
+    closePopup(document.querySelector('.popup_opened'));
   }
 }
 
