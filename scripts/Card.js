@@ -25,6 +25,7 @@ class Card {
 
   _handleDelete = () => {
     this._newElement.remove();
+    this._newElement = null;
   }
 
   _handleOpenPopupImage = () => {
