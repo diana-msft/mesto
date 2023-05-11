@@ -67,7 +67,7 @@ button.addEventListener('click', () => closePopup(popup));
  * попап изменения данных в профиле
  */
 const openProfilePopup = function () {
-  FormProfileValidator._resetErrors();
+  FormProfileValidator.resetErrors();
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
   openPopup(popupProfile);
@@ -128,7 +128,7 @@ FormAddValidator.enableValidation();
  * */
 addButton.addEventListener("click", () => {
   formAdd.reset();
-  FormAddValidator._resetErrors();
+  FormAddValidator.resetErrors();
   openPopup(popupAdd);
 });
 

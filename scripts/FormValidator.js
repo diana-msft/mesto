@@ -67,7 +67,7 @@ class FormValidator {
   }
 
   //обнуление ошибок
-  _resetErrors() {
+  resetErrors() {
     this._inputs.forEach((input) => this._hideInputError(input));
     this._disableButton()
   }
