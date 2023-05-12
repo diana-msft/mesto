@@ -37,27 +37,27 @@ const validateConfig = {
  */
 const openPopup = function(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener("keydown", handleEscPress);
+  popup.addEventListener("click", handleOverlayClick);
 }
 
 const closePopup = function(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener("keydown", handleEscPress);
+  popup.removeEventListener("click", handleOverlayClick);
+}
+
+const handleEscPress = function(event) {
+  if (event.key === "Escape") {
+    closePopup(document.querySelector(".popup_opened"));
+  }
 }
 
 const handleOverlayClick = function(event) {
-  const openedPopup = document.querySelector(".popup_opened");
-  if (event.target === openedPopup) {
-    closePopup(openedPopup);
+  if (event.target === event.currentTarget) {
+    closePopup(event.currentTarget);
   }
 }
-const handleEscPress = function(event) {
-  const openedPopup = document.querySelector(".popup_opened");
-  if (event.key === "Escape") {
-    closePopup(openedPopup);
-  }
-}
-
-document.addEventListener("click", handleOverlayClick);
-document.addEventListener("keydown", handleEscPress);
 
 closeButtons.forEach((button) => {
 const popup = button.closest('.popup');
