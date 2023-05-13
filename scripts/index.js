@@ -20,6 +20,7 @@ const popupImage = document.querySelector(".zoom-popup");
 const zoomImage = document.querySelector(".popup__image");
 const zoomImageName = document.querySelector(".popup__image-caption");
 const closeButtons = document.querySelectorAll('.popup__close');
+const popups = document.querySelectorAll('.popup');
 
 const selectorTemplate = "#elementTemplate";
 
@@ -38,13 +39,13 @@ const validateConfig = {
 const openPopup = function(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener("keydown", handleEscPress);
-  popup.addEventListener("click", handleOverlayClick);
+  // popup.addEventListener("click", handleOverlayClick);
 }
 
 const closePopup = function(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener("keydown", handleEscPress);
-  popup.removeEventListener("click", handleOverlayClick);
+  // popup.removeEventListener("click", handleOverlayClick);
 }
 
 const handleEscPress = function(event) {
@@ -58,6 +59,14 @@ const handleOverlayClick = function(event) {
     closePopup(event.currentTarget);
   }
 }
+
+//я сначала я вынесла слушатели за пределы, но потом было замечание, 
+//что слушатель нужно устанавливать при каждом открытии и удалять при закрытии,
+//у меня всё сломалось, и я запуталась))
+//надеюсь, сейчас я правильно поняла, и решила реализовать так:
+popups.forEach((popup) => {
+  popup.addEventListener("click", handleOverlayClick);
+});
 
 closeButtons.forEach((button) => {
 const popup = button.closest('.popup');
