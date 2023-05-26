@@ -1,6 +1,6 @@
-import initialCards from "./initial-cards.js";
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
+import initialCards from "./scripts/utils/constants.js";
+import Card from "./scripts/components/Card.js";
+import FormValidator from "./scripts/components/FormValidator.js";
 
 const elementsContainer = document.querySelector(".elements");
 const addButton = document.querySelector(".profile__add-button");
