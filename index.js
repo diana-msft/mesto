@@ -1,6 +1,7 @@
 import initialCards from "./scripts/utils/constants.js";
 import Card from "./scripts/components/Card.js";
 import FormValidator from "./scripts/components/FormValidator.js";
+import Popup from "./scripts/components/Popup.js";
 
 const elementsContainer = document.querySelector(".elements");
 const addButton = document.querySelector(".profile__add-button");
@@ -23,6 +24,7 @@ const closeButtons = document.querySelectorAll('.popup__close');
 const popups = document.querySelectorAll('.popup');
 
 const selectorTemplate = "#elementTemplate";
+const popupProfileSelector = ".profile-popup";
 
 const validateConfig = {
   inputSelector: '.form__input',
@@ -33,45 +35,43 @@ const validateConfig = {
   textErrorClass: 'form__error_type_active',
 };
 
-/**
- * поведение попапов
- */
-const openPopup = function(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener("keydown", handleEscPress);
-  // popup.addEventListener("click", handleOverlayClick);
-}
+// /**
+//  * поведение попапов
+//  */
+// const openPopup = function(popup) {
+//   popup.classList.add('popup_opened');
+//   document.addEventListener("keydown", handleEscPress);
+// }
 
-const closePopup = function(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener("keydown", handleEscPress);
-  // popup.removeEventListener("click", handleOverlayClick);
-}
+// const closePopup = function(popup) {
+//   popup.classList.remove('popup_opened');
+//   document.removeEventListener("keydown", handleEscPress);
+// }
 
-const handleEscPress = function(event) {
-  if (event.key === "Escape") {
-    closePopup(document.querySelector(".popup_opened"));
-  }
-}
+// const handleEscPress = function(event) {
+//   if (event.key === "Escape") {
+//     closePopup(document.querySelector(".popup_opened"));
+//   }
+// }
 
-const handleOverlayClick = function(event) {
-  if (event.target === event.currentTarget) {
-    closePopup(event.currentTarget);
-  }
-}
+const profilePopup = new Popup(popupProfileSelector);
+profilePopup.setEventListeners();
+console.log(profilePopup);
+// const handleOverlayClick = function(event) {
+//   if (event.target === event.currentTarget) {
+//     closePopup(event.currentTarget);
+//   }
+// }
 
-//я сначала вынесла слушатели за пределы, но потом было замечание, 
-//что слушатель нужно устанавливать при каждом открытии и удалять при закрытии,
-//у меня всё сломалось, и я запуталась))
-//надеюсь, сейчас я правильно поняла, и решила реализовать так:
-popups.forEach((popup) => {
-  popup.addEventListener("click", handleOverlayClick);
-});
+// //вынесла слушатели за пределы
+// popups.forEach((popup) => {
+//   popup.addEventListener("click", handleOverlayClick);
+// });
 
-closeButtons.forEach((button) => {
-const popup = button.closest('.popup');
-button.addEventListener('click', () => closePopup(popup));
-});
+// closeButtons.forEach((button) => {
+// const popup = button.closest('.popup');
+// button.addEventListener('click', () => closePopup(popup));
+// });
 
 
 /**
@@ -81,7 +81,8 @@ const openProfilePopup = function () {
   FormProfileValidator.resetErrors();
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
-  openPopup(popupProfile);
+  profilePopup.open();
+  // openPopup(popupProfile);
 };
 
 const handleProfileFormSubmit = function (event) {
@@ -141,7 +142,7 @@ FormAddValidator.enableValidation();
 addButton.addEventListener("click", () => {
   formAdd.reset();
   FormAddValidator.resetErrors();
-  openPopup(popupAdd);
+  // openPopup(popupAdd);
 });
 
 popupSubmitButton.addEventListener("click", () => {
