@@ -17,6 +17,12 @@ const jobInput = document.querySelector(".form__input_type_job");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const profileFormSubmit = document.forms["profile-form"];
+const popupZoomImage = document.querySelector(".zoom-popup");
+const popupImage = document.querySelector(".popup__image");
+const popupImageCaption = document.querySelector(".popup__image-caption");
+const closeButtons = document.querySelectorAll('.popup__close');
+const popups = document.querySelectorAll('.popup');
+
 
 const selectorTemplate = "#elementTemplate";
 const popupImageSelector = ".popup__image";
@@ -30,8 +36,41 @@ const validateConfig = {
   textErrorClass: 'form__error_type_active',
 };
 
-const popupImage = new PopupWithImage(popupImageSelector);
-// popupImage.setEventListeners();
+/**
+ * поведение попапов
+ */
+const openPopup = function(popup) {
+  popup.classList.add('popup_opened');
+  document.addEventListener("keydown", handleEscPress);
+}
+
+const closePopup = function(popup) {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener("keydown", handleEscPress);
+}
+
+const handleEscPress = function(event) {
+  if (event.key === "Escape") {
+    closePopup(document.querySelector(".popup_opened"));
+  }
+}
+
+const handleOverlayClick = function(event) {
+  if (event.target === event.currentTarget) {
+    closePopup(event.currentTarget);
+  }
+}
+popups.forEach((popup) => {
+  popup.addEventListener("click", handleOverlayClick);
+});
+
+closeButtons.forEach((button) => {
+const popup = button.closest('.popup');
+button.addEventListener('click', () => closePopup(popup));
+});
+
+const popupWithImage = new PopupWithImage(popupImageSelector);
+// popupWithImage.setEventListeners();
 
 /**
  * попап изменения данных в профиле
@@ -55,11 +94,21 @@ buttonOpenPopupProfile.addEventListener("click", openProfilePopup);
 profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
 
 /**
+   * показать увеличенную картинку карточки
+   */
+// const openImagePopup = function(element) {
+//   popupImage.setAttribute("src", element.link);
+//   popupImage.setAttribute("alt", element.name);
+//   popupImageCaption.textContent = element.name;
+//   openPopup(popupZoomImage);
+// };
+
+/**
  * создание карточек
  */
 
 const createCardElement = function(name, link) {
-  const card = new Card({name: name, link: link}, selectorTemplate, popupImage.open);
+  const card = new Card({name: name, link: link}, selectorTemplate, popupWithImage.open);
   return card.createCard();
 }
 
