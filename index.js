@@ -31,6 +31,7 @@ const validateConfig = {
 };
 
 const popupImage = new PopupWithImage(popupImageSelector);
+// popupImage.setEventListeners();
 
 /**
  * попап изменения данных в профиле
@@ -88,7 +89,7 @@ FormAddValidator.enableValidation();
 addButton.addEventListener("click", () => {
   formAdd.reset();
   FormAddValidator.resetErrors();
-  openPopup(popupAdd);
+  // openPopup(popupAdd);
 });
 
 popupSubmitButton.addEventListener("click", () => {
