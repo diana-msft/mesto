@@ -2,7 +2,7 @@ import initialCards from "./scripts/utils/constants.js";
 import Card from "./scripts/components/Card.js";
 import FormValidator from "./scripts/components/FormValidator.js";
 import PopupWithImage from "./scripts/components/PopupWithImage.js";
-// import Section from "./scripts/components/Section.js";
+import Section from "./scripts/components/Section.js";
 import Popup from "./scripts/components/Popup.js";
 
 const elementsContainer = document.querySelector(".elements");
@@ -28,6 +28,7 @@ const popups = document.querySelectorAll('.popup');
 const selectorTemplate = "#elementTemplate";
 const popupImageSelector = ".zoom-popup";
 const popupProfileSelector = ".profile-popup";
+const elementsSelector = ".elements";
 
 const validateConfig = {
   inputSelector: '.form__input',
@@ -62,6 +63,7 @@ const validateConfig = {
 //     closePopup(event.currentTarget);
 //   }
 // }
+
 // popups.forEach((popup) => {
 //   popup.addEventListener("click", handleOverlayClick);
 // });
@@ -128,23 +130,15 @@ profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
 // const section = new Section({
 //   items: initialCards,
 //   renderer: (name, link) => {
-//     const card = new Card({name: name, link: link}, selectorTemplate, popupWithImage.open);
-//     const cardElement = card.createCard();
+//     const card = new Card({name, link}, selectorTemplate, () => {
+//       popupImageZoom.open(name, link);
+//     });
 //     return card.createCard();
-    
 //   }
-//   })
-  
-// const section = new Section(".elements", {
-//   renderer: (item) => {
-//     const element = createCard(item)
-//     section.addItem(element);
-// }
-// });
+//   }, elementsSelector);
 
-// initialCards.forEach((data) => {
-//   const element = createCard(data);
-// });
+//   section.addItem(cardElement);
+
 
 const createCardElement = function(name, link) {
   const card = new Card({name, link}, selectorTemplate, {
