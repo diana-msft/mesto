@@ -81,7 +81,7 @@ profilePopup.setEventListeners();
 //   }
 // }
 
-const popupImageZoom = new PopupWithImage(popupImageSelector);
+const popupImageZoom = new PopupWithImage(".zoom-popup");
 popupImageZoom.setEventListeners();
 
 // function createCardElement(name, link) {
@@ -143,7 +143,7 @@ profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
 const createCardElement = function(name, link) {
   const card = new Card({name, link}, selectorTemplate, {
     handleOpenPopupImage: (name, link) => { 
-      popupImageZoom.open()
+      popupImageZoom.open
     }
   });
   return card.createCard();
