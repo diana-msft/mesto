@@ -3,7 +3,7 @@ export default class Section {
     this._section = document.querySelector(selector);
     this._renderer = renderer;
 
-    console.log(this._section);
+    // console.log(this._section);
   }
 
     renderItems(items) {

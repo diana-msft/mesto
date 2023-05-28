@@ -29,8 +29,8 @@ export default class Card {
   }
 
   _handleOpenPopupImage = () => {
-    // this._openImagePopup(this._element);
     this._openImagePopup({ text: this._name, link: this._link });
+    // popupImageZoom.open({ text: this._name, link: this._link });
   }
 
   _setEventListeners () {
@@ -38,6 +38,7 @@ export default class Card {
     this._elementDeleteButton.addEventListener('click', this._handleDelete);
     this._elementImage.addEventListener('click', this._handleOpenPopupImage);
   }
+  
 
   //создание карточки элемента
   createCard() {
