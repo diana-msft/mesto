@@ -29,7 +29,8 @@ export default class Card {
   }
 
   _handleOpenPopupImage = () => {
-    this._openImagePopup(this._element);
+    // this._openImagePopup(this._element);
+    this._openImagePopup({ text: this._name, link: this._link });
   }
 
   _setEventListeners () {

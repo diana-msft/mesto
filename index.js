@@ -2,6 +2,8 @@ import initialCards from "./scripts/utils/constants.js";
 import Card from "./scripts/components/Card.js";
 import FormValidator from "./scripts/components/FormValidator.js";
 import PopupWithImage from "./scripts/components/PopupWithImage.js";
+import Section from "./scripts/components/Section.js";
+import Popup from "./scripts/components/Popup.js";
 
 const elementsContainer = document.querySelector(".elements");
 const addButton = document.querySelector(".profile__add-button");
@@ -23,9 +25,9 @@ const popupImageCaption = document.querySelector(".popup__image-caption");
 const closeButtons = document.querySelectorAll('.popup__close');
 const popups = document.querySelectorAll('.popup');
 
-
 const selectorTemplate = "#elementTemplate";
 const popupImageSelector = ".popup__image";
+const popupProfileSelector = ".profile-popup";
 
 const validateConfig = {
   inputSelector: '.form__input',
@@ -69,6 +71,15 @@ const popup = button.closest('.popup');
 button.addEventListener('click', () => closePopup(popup));
 });
 
+// const profilePopup = new Popup(popupProfileSelector);
+// profilePopup.setEventListeners();
+// console.log(profilePopup);
+// const handleOverlayClick = function(event) {
+//   if (event.target === event.currentTarget) {
+//     closePopup(event.currentTarget);
+//   }
+// }
+
 const popupWithImage = new PopupWithImage(popupImageSelector);
 // popupWithImage.setEventListeners();
 
@@ -96,27 +107,48 @@ profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
 /**
    * показать увеличенную картинку карточки
    */
-// const openImagePopup = function(element) {
-//   popupImage.setAttribute("src", element.link);
-//   popupImage.setAttribute("alt", element.name);
-//   popupImageCaption.textContent = element.name;
-//   openPopup(popupZoomImage);
-// };
+const openImagePopup = function(element) {
+  popupImage.setAttribute("src", element.link);
+  popupImage.setAttribute("alt", element.name);
+  popupImageCaption.textContent = element.name;
+  openPopup(popupZoomImage);
+};
 
 /**
  * создание карточек
  */
 
-const createCardElement = function(name, link) {
+const createCardElement = (name, link) => {
   const card = new Card({name: name, link: link}, selectorTemplate, popupWithImage.open);
   return card.createCard();
 }
 
-const createCard = function() {
-  initialCards.forEach((element) => {
-    renderCard(elementsContainer, createCardElement(element.name, element.link));
-  })
+// const section = new Section({
+//   items: initialCards,
+//   renderer: (name, link) => {
+//     const card = new Card({name: name, link: link}, selectorTemplate, popupWithImage.open);
+//     const cardElement = card.createCard();
+//     return card.createCard();
+    
+//   }
+//   })
+  
+const section = new Section(".elements", {
+  renderer: (item) => {
+    const element = createCard(item)
+    section.addItem(element);
 }
+});
+
+initialCards.forEach((data) => {
+  const element = createCard(data);
+});
+
+// const createCard = function() {
+//   initialCards.forEach((element) => {
+//     renderCard(elementsContainer, createCardElement(element.name, element.link));
+//   })
+// }
 
 const renderCard = function(elementsContainer, card) {
   elementsContainer.prepend(card)
@@ -147,9 +179,11 @@ popupSubmitButton.addEventListener("click", () => {
 
 const handleAddFormSubmit = function(event) {
   event.preventDefault();
+
+  section.addItem(createCardElement(titleInput.value, linkInput.value));
   
-  const cardData = {name: titleInput.value, link: linkInput.value};
-  const cardElement = createCardElement(cardData.name, cardData.link);
+  // const cardData = {name: titleInput.value, link: linkInput.value};
+  // const cardElement = createCardElement(cardData.name, cardData.link);
 
   renderCard(elementsContainer, cardElement); 
   formAdd.reset();
@@ -158,3 +192,5 @@ const handleAddFormSubmit = function(event) {
 
 formAdd.addEventListener("submit", handleAddFormSubmit);
 
+
+section.renderItems(initialCards);
