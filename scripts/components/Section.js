@@ -14,28 +14,8 @@ export default class Section {
   addItem(cardElement) {
     this._container.prepend(cardElement);
   }
+
+  renderItems() {
+    this._initialCards.forEach(this.renderer);
+    }
 }
-
-
-  // renderItems() {
-  //   this._initialCards.forEach(this.renderer);
-  //   }
-
-
-
-// constructor(selector, renderer) {
-  //   this._section = document.querySelector(selector);
-  //   this._renderer = renderer;
-
-  //   // console.log(this._section);
-  // }
-
-  //   renderItems(items) {
-  //     items.forEach((item) => {
-  //       this._renderer(item);
-  //  });
-  // }
-
-  // addItem(element) {
-  //   this._section.prepend(element);
-  // }
