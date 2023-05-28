@@ -2,8 +2,9 @@ class Card {
   constructor(element, selectorTemplate, openImagePopup) {
     this._element = element;
     this._link = element.link;
-    this._name = element.name;
+    this._title = element.title;
     this._selectorTemplate = selectorTemplate;
+    
     this._openImagePopup = openImagePopup;
     this._newElement = this._getTemplateCopy();
     this._elementTitle = this._newElement.querySelector(".element__title");
@@ -35,7 +36,7 @@ class Card {
 
   _handleOpenPopupImage = () => {
     // this._openImagePopup(this._element);
-    popupImageZoom.open({ text: this._name, link: this._link });
+    this._openImagePopup(this._link, this._title);
 
   }
 
@@ -49,8 +50,8 @@ class Card {
   //создание карточки элемента
   createCard() {
     this._elementImage.src = this._link;
-    this._elementImage.alt = this._name;
-    this._elementTitle.textContent = this._name;
+    this._elementImage.alt = this._title;
+    this._elementTitle.textContent = this._title;
     return this._newElement;
   }
 }

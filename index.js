@@ -1,11 +1,11 @@
-import initialCards from "./scripts/utils/constants.js";
 import Card from "./scripts/components/Card.js";
 import FormValidator from "./scripts/components/FormValidator.js";
 import PopupWithImage from "./scripts/components/PopupWithImage.js";
 import Section from "./scripts/components/Section.js";
-import Popup from "./scripts/components/Popup.js";
 import UserInfo from "./scripts/components/UserInfo.js";
 import PopupWithForm from "./scripts/components/PopupWithForm.js";
+import initialCards from "./scripts/utils/constants.js";
+
 
 const elementsContainer = document.querySelector(".elements");
 const addButton = document.querySelector(".profile__add-button");
@@ -49,17 +49,12 @@ const validateConfig = {
 
 const userInfo = new UserInfo(infoConfig);
 
-
-// const profilePopup = new Popup(popupProfileSelector);
-// profilePopup.setEventListeners();
-
 const popupImageZoom = new PopupWithImage(popupImageSelector);
-popupImageZoom.setEventListeners();
 
 const section = new Section({
   items: initialCards,
   renderer: (element) => {
-    const card = new Card(element, selectorTemplate, popupImageZoom.open);
+    const card = new Card(element, selectorTemplate, openImagePopup);
     return card.createCard();
   }
   }, elementsSelector);
@@ -72,13 +67,12 @@ const section = new Section({
     userInfo.setUserInfo(popupProfileInfo.getInputValue)
     popupProfileInfo.close();
   })
-  popupProfileInfo.setEventListeners();
 
-  // const popupAddCard = new PopupWithForm(popupAddSelector, (event) => {
-  //   event.preventDefault();
-  //   section.addItem(section.renderer(popupAddCard.getInputValue));
-  // })
-
+  const popupAddCard = new PopupWithForm(popupAddSelector, (event) => {
+    event.preventDefault();
+    section.addItem(section.renderer(popupAddCard.getInputValue()));
+    popupAddCard.close();
+  })
 
 
 /**
@@ -89,15 +83,6 @@ const openProfilePopup = function () {
   popupProfileInfo.setInputValue(userInfo.getUserInfo());
   popupProfileInfo.open();
 };
-
-// const handleProfileFormSubmit = function (event) {
-//   event.preventDefault();
-
-//   profileTitle.textContent = nameInput.value;
-//   profileSubtitle.textContent = jobInput.value;
-
-//   closePopup(popupProfile);
-// };
 
 
 // валидация для формы профиля
@@ -114,42 +99,30 @@ FormAddValidator.enableValidation();
 addButton.addEventListener("click", () => {
   formAdd.reset();
   FormAddValidator.resetErrors();
+  popupAddCard.open();
 });
 
-popupSubmitButton.addEventListener("click", () => {
-  closePopup(popupAdd);
-});
-
-const handleAddFormSubmit = function(event) {
-  event.preventDefault();
-  
-  const cardData = {name: titleInput.value, link: linkInput.value};
-  const cardElement = createCardElement(cardData.name, cardData.link);
-
-  renderCard(elementsContainer, cardElement); 
-  formAdd.reset();
-  closePopup(popupAdd);
-};
-
-formAdd.addEventListener("submit", handleAddFormSubmit);
+// popupAddCard.addEventListener("submit", handleAddFormSubmit);
 
 
 /**
  * создание карточек
  */
 
-const createCardElement = function(name, link) {
-  const card = new Card({name, link}, selectorTemplate, {
-    handleOpenPopupImage: (name, link) => { 
-      popupImageZoom.open
+const createCardElement = function(title, link) {
+  const card = new Card({title, link}, selectorTemplate, {
+    handleOpenPopupImage: (title, link) => { 
+      popupImageZoom.open(title, link)
     }
   });
+  
+  // popupImageZoom.open(title, link)
   return card.createCard();
 }
 
 const createCard = function() {
   initialCards.forEach((element) => {
-    renderCard(elementsContainer, createCardElement(element.name, element.link));
+    renderCard(elementsContainer, createCardElement(element.title, element.link));
   })
 }
 
@@ -158,6 +131,10 @@ const renderCard = function(elementsContainer, card) {
 };
 
 createCard();
+
+popupImageZoom.setEventListeners();
+popupProfileInfo.setEventListeners();
+popupAddCard.setEventListeners();
 
 buttonOpenPopupProfile.addEventListener("click", openProfilePopup);
 // profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);

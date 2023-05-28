@@ -1,26 +1,26 @@
  const initialCards = [
   {
-    name: "Ала-Куль",
+    title: "Ала-Куль",
     link: "./images/alakol-unsplash.jpg",
   },
   {
-    name: "Каракол",
+    title: "Каракол",
     link: "./images/karakol-unsplash.jpg",
   },
   {
-    name: "Кегеты",
+    title: "Кегеты",
     link: "./images/kegety-unsplash.jpg",
   },
   {
-    name: "Нарын",
+    title: "Нарын",
     link: "./images/naryn-unsplash.jpg",
   },
   {
-    name: "Сон-Куль",
+    title: "Сон-Куль",
     link: "./images/sonkul-unsplash.jpg",
   },
   {
-    name: "Иссык-Куль",
+    title: "Иссык-Куль",
     link: "./images/issykul-unsplash.jpg",
   },
 ];
