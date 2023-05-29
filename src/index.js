@@ -18,7 +18,7 @@ import { initialCards,
   infoConfig,
   validateConfig}
 from "./scripts/utils/constants.js";
-import './pages/index.css'; // добавьте импорт главного файла стилей 
+import './pages/index.css'; 
 
 const userInfo = new UserInfo(infoConfig);
 
