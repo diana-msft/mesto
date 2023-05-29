@@ -1,29 +1,64 @@
+import alakol from "../../images/alakol-unsplash.jpg";
+import issykul from "../../images/issykul-unsplash.jpg";
+import karakol from "../../images/karakol-unsplash.jpg";
+import kegety from "../../images/kegety-unsplash.jpg";  
+import naryn from "../../images/naryn-unsplash.jpg";
+import sonkul from "../../images/sonkul-unsplash.jpg"; 
+ 
  const initialCards = [
   {
     title: "Ала-Куль",
-    link: "./images/alakol-unsplash.jpg",
+    link: alakol,
   },
   {
     title: "Каракол",
-    link: "./images/karakol-unsplash.jpg",
+    link: karakol,
   },
   {
     title: "Кегеты",
-    link: "./images/kegety-unsplash.jpg",
+    link: kegety,
   },
   {
     title: "Нарын",
-    link: "./images/naryn-unsplash.jpg",
+    link: naryn,
   },
   {
     title: "Сон-Куль",
-    link: "./images/sonkul-unsplash.jpg",
+    link: sonkul,
   },
   {
     title: "Иссык-Куль",
-    link: "./images/issykul-unsplash.jpg",
+    link: issykul,
   },
 ];
+
+// const initialCards = [
+//   {
+//     title: "Ала-Куль",
+//     link: "./images/alakol-unsplash.jpg",
+//   },
+//   {
+//     title: "Каракол",
+//     link: "./images/karakol-unsplash.jpg",
+//   },
+//   {
+//     title: "Кегеты",
+//     link: "./images/kegety-unsplash.jpg",
+//   },
+//   {
+//     title: "Нарын",
+//     link: "./images/naryn-unsplash.jpg",
+//   },
+//   {
+//     title: "Сон-Куль",
+//     link: "./images/sonkul-unsplash.jpg",
+//   },
+//   {
+//     title: "Иссык-Куль",
+//     link: "./images/issykul-unsplash.jpg",
+//   },
+// ];
+
 
 const elementsContainer = document.querySelector(".elements");
 const buttonOpenPopupProfile = document.querySelector(".profile__edit-button");
