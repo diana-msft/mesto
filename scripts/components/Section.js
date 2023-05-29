@@ -1,4 +1,4 @@
-export default class Section {
+class Section {
   constructor({ items, renderer }, containerSelector) {
     this._container = document.querySelector(containerSelector);
     this._initialCards = items;
@@ -19,3 +19,5 @@ export default class Section {
     this._initialCards.forEach(this.renderer);
     }
 }
+
+export default Section;

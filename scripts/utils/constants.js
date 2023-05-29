@@ -25,4 +25,42 @@
   },
 ];
 
-export default initialCards;
+const elementsContainer = document.querySelector(".elements");
+const buttonOpenPopupProfile = document.querySelector(".profile__edit-button");
+const addButton = document.querySelector(".profile__add-button");
+const formAdd = document.forms["newitem-form"];
+const profileFormSubmit = document.forms["profile-form"];
+
+const selectorTemplate = "#elementTemplate";
+const popupImageSelector = ".zoom-popup";
+const popupProfileSelector = ".profile-popup";
+const popupAddSelector = ".newitem-popup";
+const elementsSelector = ".elements";
+
+const infoConfig = {
+  profileTitleSelector: ".profile__title",
+  profileSubtitleSelector: ".profile__subtitle",
+};
+
+const validateConfig = {
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit-button',
+  errorSelectorTemplate: '.form__error_type_',
+  disableButtonClass: 'form__submit-button:disabled',
+  inputErrorClass: 'form__input_type_invalid',
+  textErrorClass: 'form__error_type_active',
+};
+
+export { initialCards, 
+  elementsContainer, 
+  buttonOpenPopupProfile, 
+  addButton, 
+  formAdd, 
+  profileFormSubmit,
+  selectorTemplate,
+  popupImageSelector,
+  popupProfileSelector,
+  popupAddSelector,
+  elementsSelector,
+  infoConfig,
+  validateConfig};

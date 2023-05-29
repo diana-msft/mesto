@@ -4,7 +4,6 @@ class Card {
     this._link = element.link;
     this._title = element.title;
     this._selectorTemplate = selectorTemplate;
-    
     this._openImagePopup = openImagePopup;
     this._newElement = this._getTemplateCopy();
     this._elementTitle = this._newElement.querySelector(".element__title");
@@ -14,7 +13,7 @@ class Card {
 
     this._handleLike = this._handleLike.bind(this);
     this._handleDelete = this._handleDelete.bind(this);
-    this._handleOpenPopupImage = this._handleOpenPopupImage.bind(this);
+    this._handleCardClick = this._handleCardClick.bind(this);
 
     this._setEventListeners ();
   }
@@ -34,8 +33,7 @@ class Card {
     this._newElement = null;
   }
 
-  _handleOpenPopupImage = () => {
-    // this._openImagePopup(this._element);
+  _handleCardClick = () => {
     this._openImagePopup(this._link, this._title);
 
   }
@@ -43,7 +41,7 @@ class Card {
   _setEventListeners () {
     this._elementLikeButton.addEventListener('click', this._handleLike);
     this._elementDeleteButton.addEventListener('click', this._handleDelete);
-    this._elementImage.addEventListener('click', this._handleOpenPopupImage);
+    this._elementImage.addEventListener('click', this._handleCardClick);
   }
   
 
