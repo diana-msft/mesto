@@ -113,11 +113,7 @@ const openImagePopup = function(element) {
  */
 
 const createCardElement = function(title, link) {
-  const card = new Card({title, link}, selectorTemplate, openImagePopup, {
-    _handleCardClick: (title, link) => { 
-      popupImageZoom.open(title, link)
-    }
-  });
+  const card = new Card({title, link}, selectorTemplate, openImagePopup);
   return card.createCard();
 }
 
