@@ -97,7 +97,6 @@ popupSubmitButton.addEventListener("click", () => {
   popupAddCard.close();
 });
 
-formAdd.addEventListener("submit", handleAddFormSubmit);
 
 /**
    * показать увеличенную картинку карточки
@@ -143,3 +142,4 @@ popupAddCard.setEventListeners();
 
 buttonOpenPopupProfile.addEventListener("click", openProfilePopup);
 profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
+formAdd.addEventListener("submit", handleAddFormSubmit);
