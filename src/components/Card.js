@@ -1,8 +1,8 @@
 class Card {
-  constructor(element, selectorTemplate, openImagePopup) {
-    this._element = element;
-    this._link = element.link;
-    this._title = element.title;
+  constructor(card, selectorTemplate, openImagePopup) {
+    this._card = card;
+    this._link = card.link;
+    this._title = card.title;
     this._selectorTemplate = selectorTemplate;
     this._openImagePopup = openImagePopup;
     this._newElement = this._getTemplateCopy();
@@ -52,6 +52,5 @@ class Card {
     return this._newElement;
   }
 }
-
 
 export default Card;
