@@ -2,7 +2,7 @@ class Card {
   constructor(element, selectorTemplate, openImagePopup) {
     this._element = element;
     this._link = element.link;
-    this._name = element.name;
+    this._title = element.title;
     this._selectorTemplate = selectorTemplate;
     this._openImagePopup = openImagePopup;
     this._newElement = this._getTemplateCopy();
@@ -10,6 +10,11 @@ class Card {
     this._elementImage = this._newElement.querySelector(".element__image");
     this._elementDeleteButton = this._newElement.querySelector(".element__delete-button");
     this._elementLikeButton = this._newElement.querySelector(".element__like-button");
+
+    this._handleLike = this._handleLike.bind(this);
+    this._handleDelete = this._handleDelete.bind(this);
+    this._handleCardClick = this._handleCardClick.bind(this);
+
     this._setEventListeners ();
   }
 
@@ -28,23 +33,25 @@ class Card {
     this._newElement = null;
   }
 
-  _handleOpenPopupImage = () => {
-    this._openImagePopup(this._element);
-  }
+  _handleCardClick = () => {
+    this._openImagePopup(this._link, this._title);
+  };
 
   _setEventListeners () {
     this._elementLikeButton.addEventListener('click', this._handleLike);
     this._elementDeleteButton.addEventListener('click', this._handleDelete);
-    this._elementImage.addEventListener('click', this._handleOpenPopupImage);
+    this._elementImage.addEventListener('click', this._handleCardClick);
   }
+  
 
   //создание карточки элемента
   createCard() {
     this._elementImage.src = this._link;
-    this._elementImage.alt = this._name;
-    this._elementTitle.textContent = this._name;
+    this._elementImage.alt = this._title;
+    this._elementTitle.textContent = this._title;
     return this._newElement;
   }
 }
+
 
 export default Card;
