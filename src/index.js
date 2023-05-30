@@ -6,7 +6,8 @@ import UserInfo from "./scripts/components/UserInfo.js";
 import PopupWithForm from "./scripts/components/PopupWithForm.js";
 import { initialCards, 
   elementsContainer, 
-  buttonOpenPopupProfile, 
+  buttonOpenPopupProfile,
+  popupSubmitButton, 
   addButton, 
   formAdd, 
   profileFormSubmit,
@@ -16,7 +17,10 @@ import { initialCards,
   popupAddSelector,
   elementsSelector,
   infoConfig,
-  validateConfig}
+  validateConfig,
+  zoomImage,
+  zoomImageName}
+
 from "./scripts/utils/constants.js";
 import './pages/index.css'; 
 
@@ -46,6 +50,17 @@ const section = new Section({
     popupAddCard.close();
   })
 
+  /**
+ * валидация
+ * */
+//для формы профиля
+const FormProfileValidator = new FormValidator(validateConfig, profileFormSubmit);
+FormProfileValidator.enableValidation();
+
+//для формы добавления карточки
+const FormAddValidator = new FormValidator(validateConfig, formAdd);
+FormAddValidator.enableValidation();
+
 
 /**
  * попап изменения данных в профиле
@@ -56,31 +71,50 @@ const openProfilePopup = function () {
   popupProfileInfo.open();
 };
 
-// валидация для формы профиля
-const FormProfileValidator = new FormValidator(validateConfig, profileFormSubmit);
-FormProfileValidator.enableValidation();
-
-// валидация для формы добавления карточки
-const FormAddValidator = new FormValidator(validateConfig, formAdd);
-FormAddValidator.enableValidation();
+const handleProfileFormSubmit = function (event) {
+  event.preventDefault();
+  const { name, job } = popupProfileInfo.getInputValue();
+  userInfo.setUserInfo({ name, job });
+  popupProfileInfo.close();
+};
 
 /**
  * добавление новой карточки
  * */
+
+const handleAddFormSubmit = function(event) {
+  event.preventDefault();
+  section.addItem(section.renderer(popupAddCard.getInputValue()));
+  popupAddCard.close();
+};
+
 addButton.addEventListener("click", () => {
   FormAddValidator.resetErrors();
   popupAddCard.open();
 });
 
-// popupAddCard.addEventListener("submit", handleAddFormSubmit);
+popupSubmitButton.addEventListener("click", () => {
+  popupAddCard.close();
+});
 
+formAdd.addEventListener("submit", handleAddFormSubmit);
+
+/**
+   * показать увеличенную картинку карточки
+   */
+const openImagePopup = function(element) {
+    zoomImage.setAttribute("src", element.link);
+    zoomImage.setAttribute("alt", element.title);
+    zoomImageName.textContent = element.title;
+    popupImageZoom.open();
+  };
 
 /**
  * создание карточек
  */
 
 const createCardElement = function(title, link) {
-  const card = new Card({title, link}, selectorTemplate, {
+  const card = new Card({title, link}, selectorTemplate, openImagePopup, {
     _handleCardClick: (title, link) => { 
       popupImageZoom.open(title, link)
     }
@@ -100,9 +134,12 @@ const renderCard = function(elementsContainer, card) {
 
 createCard();
 
+/**
+ * слушатели
+ */
 popupImageZoom.setEventListeners();
 popupProfileInfo.setEventListeners();
 popupAddCard.setEventListeners();
 
 buttonOpenPopupProfile.addEventListener("click", openProfilePopup);
-// profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);
+profileFormSubmit.addEventListener("submit", handleProfileFormSubmit);

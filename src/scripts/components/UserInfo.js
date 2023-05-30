@@ -9,7 +9,7 @@ class UserInfo {
   }
 
   setUserInfo(info) {
-    this._profileTitle.textContent = info.username;
+    this._profileTitle.textContent = info.name;
     this._profileSubtitle.textContent = info.job;
   }
 }

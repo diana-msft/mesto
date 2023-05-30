@@ -32,39 +32,14 @@ import sonkul from "../../images/sonkul-unsplash.jpg";
   },
 ];
 
-// const initialCards = [
-//   {
-//     title: "Ала-Куль",
-//     link: "./images/alakol-unsplash.jpg",
-//   },
-//   {
-//     title: "Каракол",
-//     link: "./images/karakol-unsplash.jpg",
-//   },
-//   {
-//     title: "Кегеты",
-//     link: "./images/kegety-unsplash.jpg",
-//   },
-//   {
-//     title: "Нарын",
-//     link: "./images/naryn-unsplash.jpg",
-//   },
-//   {
-//     title: "Сон-Куль",
-//     link: "./images/sonkul-unsplash.jpg",
-//   },
-//   {
-//     title: "Иссык-Куль",
-//     link: "./images/issykul-unsplash.jpg",
-//   },
-// ];
-
-
 const elementsContainer = document.querySelector(".elements");
 const buttonOpenPopupProfile = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 const formAdd = document.forms["newitem-form"];
 const profileFormSubmit = document.forms["profile-form"];
+const popupSubmitButton = document.querySelector(".newitem-form__submit-button");
+const zoomImage = document.querySelector(".popup__image");
+const zoomImageName = document.querySelector(".popup__image-caption");
 
 const selectorTemplate = "#elementTemplate";
 const popupImageSelector = ".zoom-popup";
@@ -88,7 +63,8 @@ const validateConfig = {
 
 export { initialCards, 
   elementsContainer, 
-  buttonOpenPopupProfile, 
+  buttonOpenPopupProfile,
+  popupSubmitButton, 
   addButton, 
   formAdd, 
   profileFormSubmit,
@@ -98,4 +74,6 @@ export { initialCards,
   popupAddSelector,
   elementsSelector,
   infoConfig,
-  validateConfig};
+  validateConfig,
+  zoomImage,
+  zoomImageName};

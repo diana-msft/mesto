@@ -35,8 +35,7 @@ class Card {
 
   _handleCardClick = () => {
     this._openImagePopup(this._link, this._title);
-
-  }
+  };
 
   _setEventListeners () {
     this._elementLikeButton.addEventListener('click', this._handleLike);
