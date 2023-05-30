@@ -1,9 +1,9 @@
-import alakol from "../../images/alakol-unsplash.jpg";
-import issykul from "../../images/issykul-unsplash.jpg";
-import karakol from "../../images/karakol-unsplash.jpg";
-import kegety from "../../images/kegety-unsplash.jpg";  
-import naryn from "../../images/naryn-unsplash.jpg";
-import sonkul from "../../images/sonkul-unsplash.jpg"; 
+import alakol from '../images/alakol-unsplash.jpg';
+import issykul from "../images/issykul-unsplash.jpg";
+import karakol from "../images/karakol-unsplash.jpg";
+import kegety from "../images/kegety-unsplash.jpg";  
+import naryn from "../images/naryn-unsplash.jpg";
+import sonkul from "../images/sonkul-unsplash.jpg"; 
  
  const initialCards = [
   {
