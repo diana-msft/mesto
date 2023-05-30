@@ -8,8 +8,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   outline: none;
   width: 100%;
-  position: relative;
-  padding-top: 30px;
+  padding: 0 0 13px 0;
   max-width: 358px;
   top: -18px;
   bottom: 11px;

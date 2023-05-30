@@ -1,11 +1,13 @@
 .form__error {
-  display: flex;
+  box-sizing: border-box;
+  display: block;
+  min-height: 36px;
   font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
   color: #ff0000;
-  width: 100%;
+  width: 90%;
   padding-top: 5px;
 }

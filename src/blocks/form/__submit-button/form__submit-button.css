@@ -1,5 +1,5 @@
 .form__submit-button {
-  font-family: 'Inter', 'Arial', sans-serif;
+  font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -12,7 +12,7 @@
   border: none;
   border-radius: 2px;
   margin: 0;
-  margin-top: 48px;
+  margin-top: 13px;
   margin-bottom: 37px;
   color: #fff;
 }
@@ -23,7 +23,7 @@
 }
 
 .form__submit-button:disabled {
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
   color: #000000;
   opacity: 0.2;
   border: 1px solid #000000;
@@ -39,4 +39,4 @@
     margin-top: 38px;
     margin-bottom: 2px;
   }
-} 
+}
