@@ -30,11 +30,10 @@ const popupImageZoom = new PopupWithImage(popupImageSelector);
 const section = new Section({
   items: initialCards,
   renderer: (element) => {
-    const card = new Card(element, selectorTemplate, openImagePopup);
-    return card.createCard();
+    section.addItem(createCardElement(element))
   }
-  }, elementsSelector);
-  
+  });
+
 
   const popupProfileInfo = new PopupWithForm(popupProfileSelector, (event) => {
     event.preventDefault();
