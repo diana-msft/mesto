@@ -34,8 +34,7 @@ const section = new Section({
     return card.createCard();
   }
   }, elementsSelector);
-  section.addItem();
-
+  
 
   const popupProfileInfo = new PopupWithForm(popupProfileSelector, (event) => {
     event.preventDefault();
