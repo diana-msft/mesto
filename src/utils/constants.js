@@ -38,8 +38,6 @@ const addButton = document.querySelector(".profile__add-button");
 const formAdd = document.forms["newitem-form"];
 const profileFormSubmit = document.forms["profile-form"];
 const popupSubmitButton = document.querySelector(".newitem-form__submit-button");
-const zoomImage = document.querySelector(".popup__image");
-const zoomImageName = document.querySelector(".popup__image-caption");
 
 const selectorTemplate = "#elementTemplate";
 const popupImageSelector = ".zoom-popup";
