@@ -18,8 +18,7 @@ import { initialCards,
   elementsSelector,
   infoConfig,
   validateConfig,
-  zoomImage,
-  zoomImageName}
+  }
 from "../utils/constants.js";
 import './index.css'; 
 
@@ -98,7 +97,7 @@ popupSubmitButton.addEventListener("click", () => {
 /**
    * показать увеличенную картинку карточки
    */
-const openImagePopup = function(element) {
+const openImagePopup = function() {
     popupImageZoom.open(this._title, this._link);
   };
 

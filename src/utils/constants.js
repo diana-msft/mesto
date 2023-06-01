@@ -74,6 +74,4 @@ export { initialCards,
   popupAddSelector,
   elementsSelector,
   infoConfig,
-  validateConfig,
-  zoomImage,
-  zoomImageName};
+  validateConfig};
