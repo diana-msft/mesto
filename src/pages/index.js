@@ -99,10 +99,7 @@ popupSubmitButton.addEventListener("click", () => {
    * показать увеличенную картинку карточки
    */
 const openImagePopup = function(element) {
-    zoomImage.setAttribute("src", element.link);
-    zoomImage.setAttribute("alt", element.title);
-    zoomImageName.textContent = element.title;
-    popupImageZoom.open();
+    popupImageZoom.open(this._title, this._link);
   };
 
 /**
