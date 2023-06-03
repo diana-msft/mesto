@@ -16,7 +16,6 @@ import {
   popupImageSelector,
   popupProfileSelector,
   popupAddSelector,
-  elementsSelector,
   infoConfig,
   validateConfig,
 } from "../utils/constants.js";
@@ -49,21 +48,21 @@ const popupAddCard = new PopupWithForm(popupAddSelector, (event) => {
  * валидация
  * */
 //для формы профиля
-const FormProfileValidator = new FormValidator(
+const formProfileValidator = new FormValidator(
   validateConfig,
   profileFormSubmit
 );
-FormProfileValidator.enableValidation();
+formProfileValidator.enableValidation();
 
 //для формы добавления карточки
-const FormAddValidator = new FormValidator(validateConfig, formAdd);
-FormAddValidator.enableValidation();
+const formAddValidator = new FormValidator(validateConfig, formAdd);
+formAddValidator.enableValidation();
 
 /**
  * попап изменения данных в профиле
  */
 const openProfilePopup = function () {
-  FormProfileValidator.resetErrors();
+  formProfileValidator.resetErrors();
   popupProfileInfo.setInputValue(userInfo.getUserInfo());
   popupProfileInfo.open();
 };
@@ -86,7 +85,7 @@ const handleAddFormSubmit = function (event) {
 };
 
 addButton.addEventListener("click", () => {
-  FormAddValidator.resetErrors();
+  formAddValidator.resetErrors();
   popupAddCard.open();
 });
 

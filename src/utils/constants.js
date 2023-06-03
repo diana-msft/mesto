@@ -73,7 +73,6 @@ export {
   popupImageSelector,
   popupProfileSelector,
   popupAddSelector,
-  elementsSelector,
   infoConfig,
   validateConfig,
 };
