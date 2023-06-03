@@ -8,17 +8,17 @@ class Popup {
     if (event.key === "Escape") {
       this.close();
     }
-  }
+  };
 
   _handleCloseButtonClick = () => {
     this.close();
-  }
+  };
 
   _handleOverlayClick = (event) => {
     if (event.target === event.currentTarget) {
       this.close();
     }
-  }
+  };
 
   open() {
     this._popup.classList.add("popup_opened");
@@ -31,9 +31,12 @@ class Popup {
   }
 
   setEventListeners = () => {
-    this._popupCloseButton.addEventListener("click", this._handleCloseButtonClick);
-    this._popup.addEventListener("click", this._handleOverlayClick)
-  }
+    this._popupCloseButton.addEventListener(
+      "click",
+      this._handleCloseButtonClick
+    );
+    this._popup.addEventListener("click", this._handleOverlayClick);
+  };
 }
 
 export default Popup;

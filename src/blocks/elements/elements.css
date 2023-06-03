@@ -16,25 +16,25 @@
     margin-left: 30px;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-      }
+  }
 }
 
 @media screen and (max-width: 680px) {
   .elements {
     grid-template-columns: repeat(1, 1fr);
-      }
+  }
 }
-  
+
 @media screen and (max-width: 380px) {
   .elements {
     margin-right: 0;
     margin-left: 0;
-      }
+  }
 }
 
 @media screen and (max-width: 320px) {
   .elements {
     padding-left: 10px;
     padding-right: 10px;
-      }
+  }
 }

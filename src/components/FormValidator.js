@@ -12,25 +12,30 @@ class FormValidator {
     this.enableValidation();
   }
 
-    //скрыть ошибку
+  //скрыть ошибку
   _hideInputError(input) {
-    const errorTextElement = this._form.querySelector(`${this._errorSelectorTemplate}${input.name}`);
+    const errorTextElement = this._form.querySelector(
+      `${this._errorSelectorTemplate}${input.name}`
+    );
     input.classList.remove(this._inputErrorClass);
     errorTextElement.textContent = "";
   }
 
-    //показать ошибку
+  //показать ошибку
   _showInputError(input) {
-    const errorTextElement = this._form.querySelector(`${this._errorSelectorTemplate}${input.name}`);
+    const errorTextElement = this._form.querySelector(
+      `${this._errorSelectorTemplate}${input.name}`
+    );
     input.classList.add(this._inputErrorClass);
     errorTextElement.textContent = input.validationMessage;
-    
   }
-  
-    // проверка на наличие невалидных инпутов
+
+  // проверка на наличие невалидных инпутов
   _checkInputValidity(input) {
-    input.validity.valid ? this._hideInputError(input): this._showInputError(input);
-    }
+    input.validity.valid
+      ? this._hideInputError(input)
+      : this._showInputError(input);
+  }
 
   //деактивация кнопки
   _disableButton() {
@@ -57,8 +62,8 @@ class FormValidator {
       input.addEventListener("input", () => {
         this._checkInputValidity(input);
         this._toggleButtonState();
-      })
-    })
+      });
+    });
   }
 
   enableValidation() {
@@ -68,7 +73,7 @@ class FormValidator {
   //обнуление ошибок
   resetErrors() {
     this._inputs.forEach((input) => this._hideInputError(input));
-    this._disableButton()
+    this._disableButton();
   }
 }
 

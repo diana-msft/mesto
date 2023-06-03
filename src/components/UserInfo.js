@@ -1,11 +1,18 @@
 class UserInfo {
   constructor(infoConfig) {
-    this._profileTitle = document.querySelector(infoConfig.profileTitleSelector);
-    this._profileSubtitle = document.querySelector(infoConfig.profileSubtitleSelector);
+    this._profileTitle = document.querySelector(
+      infoConfig.profileTitleSelector
+    );
+    this._profileSubtitle = document.querySelector(
+      infoConfig.profileSubtitleSelector
+    );
   }
 
   getUserInfo() {
-    return {name: this._profileTitle.textContent, job: this._profileSubtitle.textContent};
+    return {
+      name: this._profileTitle.textContent,
+      job: this._profileSubtitle.textContent,
+    };
   }
 
   setUserInfo(info) {

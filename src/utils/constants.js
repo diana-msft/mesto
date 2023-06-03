@@ -1,11 +1,11 @@
-import alakol from '../images/alakol-unsplash.jpg';
+import alakol from "../images/alakol-unsplash.jpg";
 import issykul from "../images/issykul-unsplash.jpg";
 import karakol from "../images/karakol-unsplash.jpg";
-import kegety from "../images/kegety-unsplash.jpg";  
+import kegety from "../images/kegety-unsplash.jpg";
 import naryn from "../images/naryn-unsplash.jpg";
-import sonkul from "../images/sonkul-unsplash.jpg"; 
- 
- const initialCards = [
+import sonkul from "../images/sonkul-unsplash.jpg";
+
+const initialCards = [
   {
     title: "Ала-Куль",
     link: alakol,
@@ -37,7 +37,9 @@ const buttonOpenPopupProfile = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 const formAdd = document.forms["newitem-form"];
 const profileFormSubmit = document.forms["profile-form"];
-const popupSubmitButton = document.querySelector(".newitem-form__submit-button");
+const popupSubmitButton = document.querySelector(
+  ".newitem-form__submit-button"
+);
 
 const selectorTemplate = "#elementTemplate";
 const popupImageSelector = ".zoom-popup";
@@ -51,20 +53,21 @@ const infoConfig = {
 };
 
 const validateConfig = {
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__submit-button',
-  errorSelectorTemplate: '.form__error_type_',
-  disableButtonClass: 'form__submit-button:disabled',
-  inputErrorClass: 'form__input_type_invalid',
-  textErrorClass: 'form__error_type_active',
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__submit-button",
+  errorSelectorTemplate: ".form__error_type_",
+  disableButtonClass: "form__submit-button:disabled",
+  inputErrorClass: "form__input_type_invalid",
+  textErrorClass: "form__error_type_active",
 };
 
-export { initialCards, 
-  elementsContainer, 
+export {
+  initialCards,
+  elementsContainer,
   buttonOpenPopupProfile,
-  popupSubmitButton, 
-  addButton, 
-  formAdd, 
+  popupSubmitButton,
+  addButton,
+  formAdd,
   profileFormSubmit,
   selectorTemplate,
   popupImageSelector,
@@ -72,4 +75,5 @@ export { initialCards,
   popupAddSelector,
   elementsSelector,
   infoConfig,
-  validateConfig};
+  validateConfig,
+};

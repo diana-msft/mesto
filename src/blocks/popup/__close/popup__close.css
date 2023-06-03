@@ -14,22 +14,22 @@
   background-image: url(../../../images/Close-Icon.svg);
   cursor: pointer;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
+}
 
-  .popup__close:hover {
-    opacity: 0.6;
-    cursor: pointer;
-  }
-  
-  .popup__close:focus {
-    outline: none;
-  }
+.popup__close:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
 
-  @media screen and (max-width: 535px){
-    .popup__close {
-      right: 0;
-      top: -35px;
-      width: 20px;
-      height: 20px;
-    }
+.popup__close:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 535px) {
+  .popup__close {
+    right: 0;
+    top: -35px;
+    width: 20px;
+    height: 20px;
   }
+}

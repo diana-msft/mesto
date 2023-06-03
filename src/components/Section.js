@@ -11,7 +11,7 @@ class Section {
 
   renderItems() {
     this._initialCards.forEach(this.renderer);
-    }
+  }
 }
 
 export default Section;
