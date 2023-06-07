@@ -18,6 +18,7 @@ import {
   popupAddSelector,
   infoConfig,
   validateConfig,
+  elementsSelector,
 } from "../utils/constants.js";
 import "./index.css";
 
@@ -26,11 +27,11 @@ const userInfo = new UserInfo(infoConfig);
 const popupImageZoom = new PopupWithImage(popupImageSelector);
 
 const section = new Section({
-  items: initialCards,
-  renderer: (element) => {
-    section.addItem(createCardElement(element));
-  },
-});
+    items: initialCards,
+    renderer: (element) => {
+    section.addItem(createCardElement(element.title, element.link));
+    },
+}, elementsSelector);
 
 const popupProfileInfo = new PopupWithForm(popupProfileSelector, (event) => {
   event.preventDefault();
@@ -80,7 +81,7 @@ const handleProfileFormSubmit = function (event) {
 
 const handleAddFormSubmit = function (event) {
   event.preventDefault();
-  section.addItem(section.renderer(popupAddCard.getInputValue()));
+  section.addItem(createCardElement(popupAddCard.getInputValue()));
   popupAddCard.close();
 };
 
@@ -104,7 +105,7 @@ const openImagePopup = function () {
  * создание карточек
  */
 
-const createCardElement = function (title, link) {
+const createCardElement = function ({ title, link }) {
   const card = new Card({ title, link }, selectorTemplate, openImagePopup);
   return card.createCard();
 };
@@ -113,7 +114,7 @@ const createCard = function () {
   initialCards.forEach((element) => {
     renderCard(
       elementsContainer,
-      createCardElement(element.title, element.link)
+      createCardElement(element)
     );
   });
 };

@@ -75,4 +75,5 @@ export {
   popupAddSelector,
   infoConfig,
   validateConfig,
+  elementsSelector,
 };
